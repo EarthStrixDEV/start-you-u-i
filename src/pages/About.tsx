@@ -1,6 +1,8 @@
 import { Info, BookOpenText, Users, BarChart3, FileText } from "lucide-react";
 import { categories } from "../data/categories";
 import { styles } from "../data/styles";
+import { glossaryTerms } from "../data/glossaryTerms";
+import { blogPosts } from "../data/blog";
 
 interface AgentTeamMember {
   name: string;
@@ -24,9 +26,17 @@ function About() {
   // imported data arrays every render, same pattern as Home.tsx's category grid.
   const totalStyles = styles.length;
   const totalCategories = categories.length;
+  const totalGlossaryTerms = glossaryTerms.length;
+  const totalBlogPosts = blogPosts.length;
+  // UX/UI Keyword glossary content lives in a separate `glossaryTerms` array,
+  // not in `styles.ts` — special-case just that one category id rather than
+  // building a generic "content source per category" abstraction for it.
   const breakdown = categories.map((category) => ({
     label: category.label,
-    count: styles.filter((style) => style.categoryId === category.id).length,
+    count:
+      category.id === "ux-ui-keyword"
+        ? totalGlossaryTerms
+        : styles.filter((style) => style.categoryId === category.id).length,
   }));
 
   return (
@@ -65,9 +75,8 @@ function About() {
         </h3>
         <ul className="mt-2 flex flex-col gap-1.5 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
           <li>
-            Browse styles by category from the header nav — texture, flat &amp; minimal,
-            retro, dark &amp; moody, playful &amp; organic, corporate/clean, and layout
-            keywords.
+            Browse styles by category from the header nav — visual styles, layout and
+            visual-effect keywords, interactive components, and a UX/UI concepts glossary.
           </li>
           <li>Each card shows a live demo of the style so you can see it, not just read about it.</li>
           <li>
@@ -88,7 +97,7 @@ function About() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
           <div className="rounded-2xl bg-slate-100 p-5 text-center dark:bg-slate-700">
             <div className="text-3xl font-bold text-slate-800 dark:text-slate-100">
               {totalStyles}
@@ -103,6 +112,22 @@ function About() {
             </div>
             <div className="mt-1 text-xs font-medium text-slate-500 dark:text-slate-400">
               categories
+            </div>
+          </div>
+          <div className="rounded-2xl bg-slate-100 p-5 text-center dark:bg-slate-700">
+            <div className="text-3xl font-bold text-slate-800 dark:text-slate-100">
+              {totalGlossaryTerms}
+            </div>
+            <div className="mt-1 text-xs font-medium text-slate-500 dark:text-slate-400">
+              glossary terms
+            </div>
+          </div>
+          <div className="rounded-2xl bg-slate-100 p-5 text-center dark:bg-slate-700">
+            <div className="text-3xl font-bold text-slate-800 dark:text-slate-100">
+              {totalBlogPosts}
+            </div>
+            <div className="mt-1 text-xs font-medium text-slate-500 dark:text-slate-400">
+              blog posts
             </div>
           </div>
         </div>

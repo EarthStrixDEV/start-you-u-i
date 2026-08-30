@@ -610,6 +610,39 @@ export const styles: StyleConfig[] = [
     demoKind: "custom",
   },
 
+  // 1b. Texture / Material additions (T27, +2: 1 generic, 1 custom)
+  {
+    id: "textile-weave",
+    name: "Textile Weave",
+    categoryId: "texture",
+    feel: "Woven fabric surface, cozy tactile grain",
+    cssTell:
+      "repeating conic/linear-gradient crosshatch mimicking woven thread, subtle fiber-shadow ridges",
+    promptText:
+      "textile weave texture, subtle woven crosshatch surface pattern mimicking fabric threads, soft tactile fiber shadows, cozy not sterile",
+    demoKind: "generic",
+    demo: {
+      containerClass:
+        "rounded-lg bg-[repeating-linear-gradient(90deg,#d6ccc2_0px,#d6ccc2_3px,#c4b8ab_4px,#c4b8ab_5px),repeating-linear-gradient(0deg,rgba(0,0,0,0.06)_0px,rgba(0,0,0,0.06)_1px,transparent_2px,transparent_5px)] p-6 border border-stone-400/60 shadow-[inset_0_1px_2px_rgba(0,0,0,0.15)]",
+      accentClass:
+        "bg-stone-600 text-stone-50 px-5 py-2.5 rounded-md border border-stone-700 font-medium shadow-[inset_0_1px_0_rgba(255,255,255,0.15)]",
+      label: "Woven Panel",
+      bgClass: "bg-stone-200",
+      textClass: "text-stone-800",
+    },
+  },
+  {
+    id: "marble-stone-veining",
+    name: "Marble / Stone Veining",
+    categoryId: "texture",
+    feel: "Cold luxury, natural mineral veining",
+    cssTell:
+      "layered SVG/gradient veins over a pale stone base, low-opacity crack lines at angles",
+    promptText:
+      "marble stone surface with natural veining, thin irregular crack-like vein lines over a pale gray-white base, luxury cold-stone feel",
+    demoKind: "custom",
+  },
+
   // 2. Flat & Minimal additions (+3, all generic)
   {
     id: "swiss-international-style",
@@ -668,6 +701,47 @@ export const styles: StyleConfig[] = [
     },
   },
 
+  // 2b. Flat & Minimal additions (T27, +2, both generic)
+  {
+    id: "bauhaus-modernism",
+    name: "Bauhaus Modernism",
+    categoryId: "flat-minimal",
+    feel: "Primary-color geometric shapes, form-follows-function school",
+    cssTell:
+      "flat circles/triangles/squares in red-yellow-blue-black only, no gradients, grid-aligned composition",
+    promptText:
+      "Bauhaus-style UI, flat primary-color geometric shapes (circle, triangle, square) in red/yellow/blue/black, grid-aligned, form-follows-function",
+    demoKind: "generic",
+    demo: {
+      containerClass:
+        "bg-neutral-50 p-6 border-2 border-black grid grid-cols-3 gap-3 place-items-center",
+      accentClass:
+        "bg-red-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold border-2 border-black",
+      label: "●",
+      bgClass: "bg-white",
+      textClass: "text-black",
+    },
+  },
+  {
+    id: "soft-minimalism-japandi",
+    name: "Soft Minimalism / Japandi",
+    categoryId: "flat-minimal",
+    feel: "Warm muted minimal, Japanese-Scandinavian calm",
+    cssTell:
+      "low-saturation earth-tone fills, generous whitespace, rounded-sm corners, no stark black",
+    promptText:
+      "Japandi soft minimalism, warm muted earth-tone palette, generous whitespace, gentle rounded corners, calm and understated — not stark black-and-white minimalism",
+    demoKind: "generic",
+    demo: {
+      containerClass: "rounded-sm bg-stone-100 p-10 border border-stone-300",
+      accentClass:
+        "bg-stone-700 text-stone-50 px-5 py-2.5 rounded-sm font-normal tracking-wide",
+      label: "Continue",
+      bgClass: "bg-stone-50",
+      textClass: "text-stone-700",
+    },
+  },
+
   // 3. Retro additions (+3, all custom)
   {
     id: "windows95-web1",
@@ -700,6 +774,30 @@ export const styles: StyleConfig[] = [
       "beige/orange plastic-panel gradients, chunky physical-knob shapes, LED-segment digit fonts",
     promptText:
       "cassette futurism UI, analog 1970s-80s sci-fi hardware look, beige and orange plastic panels, chunky knobs and LED-segment readouts",
+    demoKind: "custom",
+  },
+
+  // 3b. Retro additions (T27, +2, both custom)
+  {
+    id: "art-deco",
+    name: "Art Deco",
+    categoryId: "retro",
+    feel: "1920s geometric luxury, gilded symmetry",
+    cssTell:
+      "symmetrical fan/sunburst motifs, gold-on-black linework, thin geometric borders",
+    promptText:
+      "Art Deco style, 1920s geometric luxury, symmetrical sunburst and fan motifs, gold linework on black, elegant ornamental borders",
+    demoKind: "custom",
+  },
+  {
+    id: "risograph-print",
+    name: "Risograph Print",
+    categoryId: "retro",
+    feel: "Grainy limited-palette poster print, slight misregistration",
+    cssTell:
+      "2-3 flat spot-color layers with grain texture, deliberate slight color-offset misalignment",
+    promptText:
+      "risograph print aesthetic, grainy limited 2-3 spot-color palette, slightly misregistered overlapping color layers, indie zine poster feel",
     demoKind: "custom",
   },
 
@@ -748,6 +846,39 @@ export const styles: StyleConfig[] = [
     demoKind: "custom",
   },
 
+  // 4b. Dark & Moody additions (T27, +2: 1 generic, 1 custom)
+  {
+    id: "midnight-academia",
+    name: "Midnight Academia",
+    categoryId: "dark-moody",
+    feel: "Dark scholarly library mood, brass and leather",
+    cssTell:
+      "deep brown/near-black bg, warm brass/gold accent, serif display type, subtle vignette",
+    promptText:
+      "midnight academia UI, deep brown near-black background, warm brass and gold accents, classic serif type, dim library-at-night mood",
+    demoKind: "generic",
+    demo: {
+      containerClass:
+        "rounded-md bg-[radial-gradient(ellipse_at_center,#2a2018_0%,#160f0a_100%)] p-6 border border-amber-800/50",
+      accentClass:
+        "bg-[#160f0a] text-amber-300 border border-amber-600/70 px-5 py-2.5 font-serif tracking-wide",
+      label: "Open the Ledger",
+      bgClass: "bg-[#160f0a]",
+      textClass: "text-amber-100",
+    },
+  },
+  {
+    id: "bioluminescent-glow",
+    name: "Bioluminescent Glow",
+    categoryId: "dark-moody",
+    feel: "Deep-sea dark, organic teal-green glow",
+    cssTell:
+      "near-black bg with soft teal/emerald glow blooms (blur-2xl), glow follows organic curved shapes not neon straight lines",
+    promptText:
+      "bioluminescent deep-sea UI, near-black background with soft glowing teal-green organic light blooms, natural luminous glow — not sharp cyberpunk neon",
+    demoKind: "custom",
+  },
+
   // 5. Playful / Organic additions (+3: 1 generic, 2 custom)
   // AA-verified: text-pink-950 on bg-pink-100 kawaii panel ≈ 9.8:1
   {
@@ -789,6 +920,30 @@ export const styles: StyleConfig[] = [
       "SVG feTurbulence filter to roughen edges, uneven crayon-stroke borders, bright saturated hand-colored fill",
     promptText:
       "crayon and scribble style UI, waxy uneven hand-colored fills, rough scribbled borders, childlike playful texture",
+    demoKind: "custom",
+  },
+
+  // 5b. Playful / Organic additions (T27, +2, both custom)
+  {
+    id: "felt-plush-toy",
+    name: "Felt / Plush Toy",
+    categoryId: "playful-organic",
+    feel: "Soft fabric-toy tactility, stitched seams",
+    cssTell:
+      "fuzzy-edge radial gradient shading + dashed stitch-line borders mimicking felt seams, muted toy colors",
+    promptText:
+      "felt plush toy style, soft fuzzy fabric shading, visible dashed stitch-seam borders, muted cozy toy colors, tactile handmade feel",
+    demoKind: "custom",
+  },
+  {
+    id: "picnic-pastel-gingham",
+    name: "Picnic Pastel Gingham",
+    categoryId: "playful-organic",
+    feel: "Warm checkered pastel, summer-picnic cheer",
+    cssTell:
+      "gingham/checkerboard background pattern in pastel two-tone, scalloped-edge card borders",
+    promptText:
+      "picnic pastel gingham style, soft pastel checkerboard background pattern, scalloped card edges, warm cheerful summer-picnic feel",
     demoKind: "custom",
   },
 
@@ -844,6 +999,39 @@ export const styles: StyleConfig[] = [
     },
   },
 
+  // 6b. Corporate / Clean Tech additions (T27, +2: 1 generic, 1 custom)
+  {
+    id: "developer-console-dark",
+    name: "Developer Console Dark",
+    categoryId: "corporate-clean",
+    feel: "Dark-mode dev-tool chrome, terminal-adjacent SaaS",
+    cssTell:
+      "near-black bg, monospace labels, thin 1px slate borders, single cool accent (blue/violet) on dark",
+    promptText:
+      "developer console dark UI, near-black background, monospace labels for technical data, thin slate borders, single cool accent color, dev-tool precision",
+    demoKind: "generic",
+    demo: {
+      containerClass:
+        "rounded-md bg-neutral-950 p-5 border border-slate-800 font-mono text-xs",
+      accentClass:
+        "bg-violet-600 text-white px-4 py-1.5 rounded text-xs font-mono border border-violet-500",
+      label: "$ deploy",
+      bgClass: "bg-neutral-950",
+      textClass: "text-slate-300",
+    },
+  },
+  {
+    id: "command-palette-first",
+    name: "Command Palette First",
+    categoryId: "corporate-clean",
+    feel: "Keyboard-driven, ⌘K-centric power-user chrome",
+    cssTell:
+      "centered floating search-input modal with kbd-styled shortcut hints, fuzzy-match result list below",
+    promptText:
+      "command palette first UI, centered floating ⌘K search modal with keyboard shortcut badges, fuzzy-searchable action list, power-user keyboard-driven design",
+    demoKind: "custom",
+  },
+
   // 7. Layout Keywords additions (+3, all custom, matches existing 5)
   {
     id: "masonry-grid",
@@ -877,5 +1065,264 @@ export const styles: StyleConfig[] = [
     promptText:
       "vertical timeline feed layout, connecting line threading through chronological stacked entries with timestamp markers",
     demoKind: "custom",
+  },
+
+  // 7b. Layout Keywords additions (T27, +2, both custom)
+  {
+    id: "diagonal-split-layout",
+    name: "Diagonal Split Layout",
+    categoryId: "layout-keywords",
+    feel: "Angled section divider cutting across the page",
+    cssTell:
+      "clip-path polygon or skew-transform creating an angled boundary between two content blocks, not a straight vertical split",
+    promptText:
+      "diagonal split layout, angled clip-path divider cutting across the section at a slant instead of a straight vertical line, dynamic asymmetric energy",
+    demoKind: "custom",
+  },
+  {
+    id: "modular-scale-grid",
+    name: "Modular Scale Grid",
+    categoryId: "layout-keywords",
+    feel: "Strict typographic modular-scale rhythm",
+    cssTell:
+      "column/row tracks and font sizes both derived from one ratio (e.g. 1.25×), uniform rhythm across every element",
+    promptText:
+      "modular scale grid layout, every spacing and font size derived from one consistent ratio, strict mathematical rhythm across the whole page",
+    demoKind: "custom",
+  },
+
+  // ─────────────────────────────────────────────────────────────
+  // 8. Visual Effect (9: 2 generic, 7 custom) — hover/interaction/
+  //    animation patterns, distinct from the visual STYLES above.
+  // ─────────────────────────────────────────────────────────────
+  {
+    id: "hover-glow",
+    name: "Hover Glow",
+    categoryId: "visual-effect",
+    feel: "Soft luminous halo that blooms around an element on hover",
+    cssTell:
+      "transition-shadow duration-300 hover:shadow-[0_0_30px_rgba(...)] on a solid-fill button",
+    promptText:
+      "hover glow effect, soft colored shadow bloom expanding around a button on hover with a smooth transition",
+    demoKind: "generic",
+    demo: {
+      containerClass: "flex flex-col items-center gap-4",
+      accentClass:
+        "bg-violet-600 text-white px-8 py-3.5 rounded-full font-semibold shadow-[0_0_0_rgba(139,92,246,0)] transition-shadow duration-300 hover:shadow-[0_0_35px_rgba(139,92,246,0.7)]",
+      label: "Hover me",
+      bgClass: "bg-slate-100",
+      textClass: "text-slate-400 text-sm",
+    },
+  },
+  {
+    id: "animated-underline",
+    name: "Animated Underline",
+    categoryId: "visual-effect",
+    feel: "Playful, confident link affordance that draws itself in",
+    cssTell:
+      "absolute span with scale-x-0 origin-left, transition-transform, group-hover:scale-x-100",
+    promptText:
+      "animated underline hover effect, thin colored bar scaling in from left to right beneath a text link on hover",
+    demoKind: "custom",
+  },
+  {
+    id: "ripple-click",
+    name: "Ripple Click",
+    categoryId: "visual-effect",
+    feel: "Material-style tactile feedback radiating from the click point",
+    cssTell:
+      "onClick spawns an absolutely-positioned circle at cursor coords, animates scale(0)->scale(1) + fade, then unmounts",
+    promptText:
+      "material design ripple click effect, circular wave expanding and fading outward from the exact click point on a button",
+    demoKind: "custom",
+    interactive: true,
+  },
+  {
+    id: "magnetic-button",
+    name: "Magnetic Button",
+    categoryId: "visual-effect",
+    feel: "Button that feels pulled toward the cursor like a magnet",
+    cssTell:
+      "onMouseMove computes cursor offset from center, applies translate() transform, snaps back to (0,0) on mouse leave",
+    promptText:
+      "magnetic button hover effect, button subtly translates toward the cursor position as it approaches, springs back on leave",
+    demoKind: "custom",
+  },
+  {
+    id: "cursor-trail",
+    name: "Cursor-Follow Trail",
+    categoryId: "visual-effect",
+    feel: "Playful particle trail chasing the pointer across a surface",
+    cssTell:
+      "onMouseMove imperatively appends throttled dot elements at cursor position, fades + shrinks each via transition, then removes",
+    promptText:
+      "cursor-follow trail effect, small gradient dots spawning at the pointer position and fading out as the cursor moves",
+    demoKind: "custom",
+  },
+  {
+    id: "particle-burst",
+    name: "Particle Burst",
+    categoryId: "visual-effect",
+    feel: "Satisfying celebratory scatter triggered by a click",
+    cssTell:
+      "onClick spawns N particles at click point, each animates translate(--x,--y) + fade via a shared keyframe with per-particle CSS custom properties",
+    promptText:
+      "particle burst click effect, colorful dots exploding outward in a ring and fading from the exact click point",
+    demoKind: "custom",
+    interactive: true,
+  },
+  {
+    id: "skeleton-shimmer",
+    name: "Skeleton Loading Shimmer",
+    categoryId: "visual-effect",
+    feel: "Calm, modern loading-state placeholder that implies content is coming",
+    cssTell:
+      "gray placeholder blocks with a diagonal gradient band animated via background-position keyframe sweep",
+    promptText:
+      "skeleton loading shimmer effect, gray placeholder blocks with a diagonal light band sweeping across continuously",
+    demoKind: "custom",
+  },
+  {
+    id: "tilt-3d-hover",
+    name: "3D Tilt on Hover",
+    categoryId: "visual-effect",
+    feel: "Tactile, physical card that responds to cursor like it has depth",
+    cssTell:
+      "onMouseMove maps cursor position within bounds to rotateX/rotateY via inline transform, perspective() wrapper, resets on leave",
+    promptText:
+      "3D tilt hover effect, card rotates on X and Y axes following cursor position within its bounds, perspective depth feel",
+    demoKind: "custom",
+  },
+  {
+    id: "elastic-bounce",
+    name: "Elastic Bounce",
+    categoryId: "visual-effect",
+    feel: "Springy, toy-like overshoot when an element is triggered",
+    cssTell:
+      "keyframe scale sequence overshooting past 1 then settling (0% -> 1.18 -> 0.94 -> 1.05 -> 1), applied via hover:animate-[...]",
+    promptText:
+      "elastic bounce effect, element overshoots past its target scale and settles with a springy squash-and-stretch motion",
+    demoKind: "generic",
+    demo: {
+      containerClass: "flex flex-col items-center gap-4",
+      accentClass:
+        "bg-gradient-to-br from-emerald-400 to-teal-500 text-white px-8 py-3.5 rounded-full font-semibold shadow-lg transition-transform hover:animate-[elastic-pop_0.55s_ease-in-out]",
+      label: "Hover me",
+      bgClass: "bg-slate-50",
+      textClass: "text-slate-400 text-sm",
+    },
+  },
+
+  // ─────────────────────────────────────────────────────────────
+  // 9. Component (9, all custom, all interactive) — real clickable,
+  //    keyboard-navigable UI components rather than decorative styles.
+  // ─────────────────────────────────────────────────────────────
+  {
+    id: "modal",
+    name: "Modal",
+    categoryId: "component",
+    feel: "Focused overlay, blocks background interaction until dismissed",
+    cssTell:
+      "fixed-position overlay panel, backdrop dim, focus-trapped, Escape/backdrop-click to close",
+    promptText:
+      "accessible modal dialog, dimmed backdrop, centered panel, Escape key and backdrop click both close it, focus returns to the trigger on close",
+    demoKind: "custom",
+    interactive: true,
+  },
+  {
+    id: "dropdown",
+    name: "Dropdown",
+    categoryId: "component",
+    feel: "Compact menu that expands from a trigger to reveal a list of choices",
+    cssTell:
+      "trigger button with aria-haspopup, absolutely-positioned option list anchored below, closes on select/Escape/outside click",
+    promptText:
+      "accessible dropdown menu, click or keyboard to open, arrow keys move between options, Enter selects, Escape closes and returns focus to the trigger",
+    demoKind: "custom",
+    interactive: true,
+  },
+  {
+    id: "tabs",
+    name: "Tabs",
+    categoryId: "component",
+    feel: "Switches between related content panels without leaving the page",
+    cssTell:
+      "role=tablist container, active tab gets an elevated/underlined treatment, roving tabindex across triggers",
+    promptText:
+      "accessible tabs component, click a tab to switch panels, arrow-key navigation between tab triggers, active tab visually distinct",
+    demoKind: "custom",
+    interactive: true,
+  },
+  {
+    id: "accordion",
+    name: "Accordion",
+    categoryId: "component",
+    feel: "Progressive disclosure — collapsed by default, expands on demand",
+    cssTell:
+      "stacked header buttons with a chevron that rotates on expand, animated max-height or hidden-attribute panel",
+    promptText:
+      "accessible accordion, single section open at a time, chevron rotates on expand, Enter or Space toggles the focused header",
+    demoKind: "custom",
+    interactive: true,
+  },
+  {
+    id: "toast",
+    name: "Toast",
+    categoryId: "component",
+    feel: "Brief, non-blocking confirmation that appears and dismisses itself",
+    cssTell:
+      "fixed-corner notification, slide/fade-in entrance, auto-dismiss timer with a manual close affordance",
+    promptText:
+      "toast notification, appears in the bottom corner after an action, auto-dismisses after a few seconds, includes a manual dismiss button, does not block the rest of the UI",
+    demoKind: "custom",
+    interactive: true,
+  },
+  {
+    id: "tooltip",
+    name: "Tooltip",
+    categoryId: "component",
+    feel: "Small contextual hint that appears next to an element on demand",
+    cssTell:
+      "absolutely-positioned label bubble with a small pointer/arrow, shows on hover or focus, fades in",
+    promptText:
+      "accessible tooltip, shows on hover and on keyboard focus (not hover-only), small arrow pointing to the trigger, dismisses on Escape or blur",
+    demoKind: "custom",
+    interactive: true,
+  },
+  {
+    id: "pagination",
+    name: "Pagination",
+    categoryId: "component",
+    feel: "Lets a user step through a long list broken into discrete pages",
+    cssTell:
+      "row of numbered buttons plus prev/next chevrons, active page visually highlighted, bounds disable prev/next",
+    promptText:
+      "accessible pagination control, numbered page buttons plus previous/next arrows, current page clearly highlighted, edges disable the out-of-range direction",
+    demoKind: "custom",
+    interactive: true,
+  },
+  {
+    id: "breadcrumb",
+    name: "Breadcrumb",
+    categoryId: "component",
+    feel: "Shows the current page's position within a hierarchy, each level clickable",
+    cssTell:
+      "ordered list of links separated by chevrons, final crumb rendered as plain text (not a link)",
+    promptText:
+      "accessible breadcrumb trail, ordered list of ancestor links separated by chevron dividers, current page shown as plain non-interactive text",
+    demoKind: "custom",
+    interactive: true,
+  },
+  {
+    id: "stepper",
+    name: "Stepper",
+    categoryId: "component",
+    feel: "Guides a user through a linear multi-step process with clear progress",
+    cssTell:
+      "row of numbered/checked circles connected by a progress line, active step highlighted, Next/Back buttons drive state",
+    promptText:
+      "accessible multi-step stepper, numbered circles connected by a line, completed steps show a checkmark, Next and Back buttons advance the active step",
+    demoKind: "custom",
+    interactive: true,
   },
 ];

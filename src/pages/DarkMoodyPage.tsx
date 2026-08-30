@@ -6,6 +6,7 @@ import StyleInfoPanel from "../components/preview/StyleInfoPanel";
 import GlitchcoreDemo from "../components/overrides/GlitchcoreDemo";
 import NoirFilmGrainDemo from "../components/overrides/NoirFilmGrainDemo";
 import DeepSpaceDemo from "../components/overrides/DeepSpaceDemo";
+import BioluminescentGlowDemo from "../components/overrides/BioluminescentGlowDemo";
 
 const category = categories.find((c) => c.id === "dark-moody")!;
 const darkMoodyStyles = styles.filter((s) => s.categoryId === "dark-moody");
@@ -15,6 +16,7 @@ const demoRegistry: Record<string, ComponentType> = {
   glitchcore: GlitchcoreDemo,
   "noir-film-grain": NoirFilmGrainDemo,
   "deep-space": DeepSpaceDemo,
+  "bioluminescent-glow": BioluminescentGlowDemo,
 };
 
 function DarkMoodyPage() {

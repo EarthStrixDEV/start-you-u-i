@@ -12,6 +12,8 @@ import StickySidebarDemo from "../components/overrides/StickySidebarDemo";
 import MasonryGridDemo from "../components/overrides/MasonryGridDemo";
 import ZPatternDemo from "../components/overrides/ZPatternDemo";
 import TimelineFeedDemo from "../components/overrides/TimelineFeedDemo";
+import DiagonalSplitDemo from "../components/overrides/DiagonalSplitDemo";
+import ModularScaleDemo from "../components/overrides/ModularScaleDemo";
 
 const category = categories.find((c) => c.id === "layout-keywords")!;
 const layoutStyles = styles.filter((s) => s.categoryId === "layout-keywords");
@@ -26,6 +28,8 @@ const demoRegistry: Record<string, ComponentType> = {
   "masonry-grid": MasonryGridDemo,
   "z-pattern-layout": ZPatternDemo,
   "timeline-vertical-feed": TimelineFeedDemo,
+  "diagonal-split-layout": DiagonalSplitDemo,
+  "modular-scale-grid": ModularScaleDemo,
 };
 
 function LayoutStyleCard({ style }: { style: StyleConfig }) {

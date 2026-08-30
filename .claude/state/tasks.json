@@ -421,6 +421,288 @@
       ]
     },
     {
+      "id": "T25",
+      "title": "Type system extension: widen CategoryId, add StyleConfig.interactive, new GlossaryTermConfig/BlogPost/BlogLevelConfig/BlogSection interfaces",
+      "layer": "ui",
+      "feature": "type-system-extension",
+      "chainDepth": "ui-data-only",
+      "assignee": "พลอย (Ploy)",
+      "dependsOn": [],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "All 4 type additions confirmed in types.ts. Build 0 errors. 54 existing styles.ts entries all still typecheck (interactive is optional). No exhaustive CategoryId switch anywhere in codebase (all consumers use .filter/=== against categories.ts data array) so no breakage risk when 3 new categories' pages land later.",
+      "acceptanceCriteria": [
+        "CategoryId widened to include visual-effect | component | ux-ui-keyword, all 3 new + 7 existing literals present",
+        "StyleConfig gets new optional `interactive?: boolean` field, all existing 68-minus-14... (54 at time of this task) entries remain valid without changes (optional field, no breakage)",
+        "New GlossaryTermConfig interface (id/term/categoryId:'ux-ui-keyword'/definition/example/whyItMatters?/iconName?) added to types.ts",
+        "New BlogLevel, BlogContentType, BlogSection, BlogPost, BlogLevelConfig types/interfaces added exactly per plan spec",
+        "npm run build (tsc) passes 0 errors — confirms no existing code broke from the widened union"
+      ]
+    },
+    {
+      "id": "T26",
+      "title": "Plan 14 new style keywords (2/category x 7 existing categories) — names, feel, cssTell, promptText, demoKind",
+      "layer": "ui",
+      "feature": "style-expansion-14",
+      "chainDepth": "planning-only",
+      "assignee": "พลอย (Ploy)",
+      "dependsOn": ["T25"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "14 new keywords chosen (textile-weave, marble-stone-veining, bauhaus-modernism, soft-minimalism-japandi, art-deco, risograph-print, midnight-academia, bioluminescent-glow, felt-plush-toy, picnic-pastel-gingham, developer-console-dark, command-palette-first, diagonal-split-layout, modular-scale-grid). Uniqueness verified via grep against all 54 existing ids, zero collisions. 7 generic / 7 custom split. Full data (feel/cssTell/promptText) ready for T27.",
+      "acceptanceCriteria": [
+        "Exactly 2 new distinct style keywords per each of the 7 EXISTING categories (14 total) — texture, flat-minimal, retro, dark-moody, playful-organic, corporate-clean, layout-keywords",
+        "None duplicate any of the 54 existing style ids/names — cross-checked against styles.ts",
+        "Each has real Feel/cssTell/promptText matching established voice, demoKind assigned with reason",
+        "List reported back before T27 begins building"
+      ]
+    },
+    {
+      "id": "T27",
+      "title": "Add 14 new StyleConfig entries to styles.ts + wire generic ones into their pages",
+      "layer": "ui",
+      "feature": "style-expansion-14",
+      "chainDepth": "ui-data-then-integration",
+      "assignee": "เบล (Bell)",
+      "dependsOn": ["T26"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "68 total across 7 existing categories (54+14), all +2 as planned. 5 generic wired for real, 9 custom placeholder'd, ready for T28. Merged cleanly with concurrent T31 additions to same file (different categoryId, no conflict). Build 0 errors, browser smoke test all 7 pages passed.",
+      "acceptanceCriteria": [
+        "14 new entries appended to styles.ts, total count now 68 (54+14), verified by count",
+        "Generic-demoKind entries wired for real via StylePreviewCard on their category page",
+        "Custom-demoKind entries show a placeholder ready for T28",
+        "npm run build passes 0 errors"
+      ]
+    },
+    {
+      "id": "T28",
+      "title": "Build custom demo components for any custom-demoKind styles from T26/T27",
+      "layer": "ui",
+      "feature": "style-expansion-14",
+      "chainDepth": "component-then-integration",
+      "assignee": "ออม (Aom)",
+      "dependsOn": ["T27"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "All 9 custom demos built + wired (Marble Veining, Art Deco, Risograph Print, Bioluminescent Glow, Felt Plush Toy, Picnic Gingham, Command Palette, Diagonal Split, Modular Scale). Build 0 errors, browser verified all 6 pages, distinctness confirmed vs similar existing demos (Diagonal Split vs Split-screen Hero, Modular Scale vs Asymmetric/Bento/Masonry). One noted simplification: Picnic Gingham's scalloped edge dropped, checkerboard pattern (the primary tell) kept.",
+      "acceptanceCriteria": [
+        "One bespoke component per custom-demoKind entry from this round, following components/overrides/ convention",
+        "Each wired into its page, placeholders removed, verified against styles.ts ground truth (not just T27's stated count — recount directly, per the pattern where a prior round's placeholder count was off by one)",
+        "Build 0 errors, screenshot-verified demos read as their named style"
+      ]
+    },
+    {
+      "id": "T29",
+      "title": "Visual Effect category: plan 8-10 effects, build data + demos + page + nav wiring",
+      "layer": "ui",
+      "feature": "visual-effect-category",
+      "chainDepth": "component-then-integration",
+      "assignee": "ออม (Aom)",
+      "dependsOn": ["T25"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "9 effects built (Hover Glow, Animated Underline, Ripple Click, Magnetic Button, Cursor Trail, Particle Burst, Skeleton Shimmer, 3D Tilt, Elastic Bounce), 2 generic/7 custom. Merged cleanly with concurrent T30 edits to shared files. Fixed the unused-ref build error T30 flagged. Build 0 errors. Verified via real DOM interaction testing (ripple spawns, particle count=10, transform values change on mousemove) not just visual inspection. Dark mode compliance confirmed (demo content zero dark: classes).",
+      "acceptanceCriteria": [
+        "8-10 real, distinct hover/interaction/animation effects chosen (e.g. hover glow, ripple click, parallax scroll, magnetic button, cursor follow, particle burst, skeleton shimmer, page transition) — plan reported before building",
+        "categories.ts gets new visual-effect entry (label/path/description/iconName='Wand2' or similar verified-real lucide icon), CategoryTabs.tsx AND Home.tsx iconMap both updated (duplication noted in plan, keep both in sync)",
+        "New src/pages/VisualEffectPage.tsx following the established category-page pattern (filter styles by categoryId, StylePreviewCard for generic, custom demoRegistry for custom)",
+        "App.tsx gets new /visual-effect route under ClayShell layout route",
+        "StyleConfig entries use the new optional `interactive: true` field where a demo needs click/hover-to-trigger, with a small visual affordance hint",
+        "Most demos are CSS-only (transition/animation/transform), matching cssTell values honestly describing the mechanism",
+        "Build 0 errors, all demos screenshot/interaction verified in a browser (not just build-passes)",
+        "Outer card wrapper follows dark: bg-slate-800/80 convention; demo content itself has zero dark: classes (same rule as all prior demos)"
+      ]
+    },
+    {
+      "id": "T30",
+      "title": "UX/UI Keyword glossary: plan 8-10 terms, build GlossaryTermConfig data + GlossaryTermCard component + page + nav wiring",
+      "layer": "ui",
+      "feature": "ux-ui-keyword-glossary",
+      "chainDepth": "component-then-integration",
+      "assignee": "เบล (Bell)",
+      "dependsOn": ["T25"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "10 real UX/UI terms with accurate definitions + concrete examples + senior-level why-it-matters (Fitts's/Hick's/Jakob's/Miller's Law, Gestalt, Cognitive Load, Von Restorff, Dark Pattern, Peak-End Rule, Progressive Disclosure). New GlossaryTermCard (About.tsx card language, no StylePreviewCard reuse). Merged cleanly with concurrent T29 edits to categories.ts/App.tsx (re-read before editing, appended not overwrote). Full dark: support verified (unlike style demos). FLAG: tsc build error found in overrides/CursorTrailDemo.tsx (unused dotsRef) — NOT this task's file, belongs to concurrent T29 which was still in progress; not fixed here, flagged for T29 to resolve.",
+      "acceptanceCriteria": [
+        "8-10 real UX/UI concepts a senior dev/designer should know (e.g. F-pattern, Fitts's Law, Progressive Disclosure, Cognitive Load, Gestalt Principles, Dark Pattern) with genuine definition + concrete example + optional whyItMatters — not filler",
+        "src/data/glossaryTerms.ts created, GlossaryTermConfig[] exported",
+        "New src/components/glossary/GlossaryTermCard.tsx built per plan (About.tsx icon-badge card language, NOT StylePreviewCard/PreviewFrame — no fake empty demo stage)",
+        "categories.ts gets new ux-ui-keyword entry, iconMap updated in both CategoryTabs.tsx and Home.tsx",
+        "New src/pages/UxUiKeywordPage.tsx filters glossaryTerms and renders GlossaryTermCard grid",
+        "App.tsx gets new /ux-ui-keyword route",
+        "Build 0 errors, dark mode verified on the new cards"
+      ]
+    },
+    {
+      "id": "T31",
+      "title": "Component category: build 9 interactive demo components (modal/dropdown/tabs/accordion/toast/tooltip/pagination/breadcrumb/stepper) — HIGHEST RISK, verify each individually",
+      "layer": "ui",
+      "feature": "component-category",
+      "chainDepth": "component-then-integration",
+      "assignee": "ออม (Aom)",
+      "dependsOn": ["T25"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "All 9 components built, genuinely interactive (useState-driven), fake-in-card containment confirmed (no portals/fixed positioning). Full ARIA/keyboard nav per spec, individually interaction-tested (not batch). Found + fixed a real hover-only tooltip a11y bug live during testing (independent hovered/focused state), re-verified after fix. Dark mode compliance confirmed (zero dark: in demo content). Merged cleanly with concurrent T27/T28/T30/T32 edits to shared files. Build 0 errors.",
+      "acceptanceCriteria": [
+        "9 real interactive components built in components/overrides/: ModalDemo, DropdownDemo, TabsDemo, AccordionDemo, ToastDemo, TooltipDemo, PaginationDemo, BreadcrumbDemo, StepperDemo — each with genuine useState-driven interactivity, not decorative",
+        "Modal/Dropdown/Toast/Tooltip use the CONFIRMED fake-in-card approach: absolute positioning SCOPED WITHIN PreviewFrame's relative isolate container — NO React Portal, NO position:fixed to viewport. This is a hard constraint from the approved plan, not a suggestion.",
+        "Accessibility built in DURING construction, not after: focus-visible rings on all interactive elements; Tabs has role=tablist/tab/tabpanel + arrow-key nav + aria-selected; Accordion has aria-expanded + Enter/Space toggle; Modal has role=dialog + aria-modal + Escape-to-close + focus-return-to-trigger; Dropdown has keyboard open/close/navigate + role=listbox/option; Tooltip shows on keyboard focus not just hover + role=tooltip; Pagination/Breadcrumb have aria-label + aria-current=page; Toast has role=status + aria-live=polite",
+        "categories.ts gets new component entry, iconMap updated in both CategoryTabs.tsx and Home.tsx",
+        "New src/pages/ComponentPage.tsx, App.tsx gets new /component route",
+        "Each of the 9 demos manually verified interactively in a real browser (click to open modal, tab through Tabs via keyboard, Escape closes Modal/Dropdown, etc.) — NOT just build-passes, NOT batch-verified, each checked individually per the plan's explicit risk-mitigation instruction",
+        "Demo content has zero dark: classes (same rule as all prior demos) — outer card wrapper only",
+        "Build 0 errors"
+      ]
+    },
+    {
+      "id": "T32",
+      "title": "Extract CopyBox from StyleInfoPanel (shared component, first sub-step of Blog work)",
+      "layer": "ui",
+      "feature": "vibe-coder-blog",
+      "chainDepth": "integration-only",
+      "assignee": "เบล (Bell)",
+      "dependsOn": ["T25"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "CopyBox.tsx extracted verbatim (text prop, no hardcoded style-specific logic). StyleInfoPanel refactored to use it, zero leftover duplicate state logic (grep-confirmed). Build 0 errors. Behavior verified via DOM state-machine polling (real clipboard blocked by shared-session focus limitation, worked around cleanly) — icon swap timing confirmed identical to pre-extraction (1.5s).",
+      "acceptanceCriteria": [
+        "New src/components/shared/CopyBox.tsx extracted from StyleInfoPanel.tsx's copy-button logic (border-accented box, italic quoted text, Copy/Check icon swap via copyToClipboard, 1.5s revert), taking `text: string` as prop",
+        "StyleInfoPanel.tsx refactored to use CopyBox internally — verified to render/behave IDENTICALLY to before (same visual output, same copy behavior) — this is a pure extraction, zero behavior change",
+        "Build 0 errors, manually verify an existing style card's copy button still works exactly as before"
+      ]
+    },
+    {
+      "id": "T33",
+      "title": "Vibe Coder Blog: build 4 BlogLevelConfig entries + 16 BlogPost content pieces (4 levels x 4 types)",
+      "layer": "ui",
+      "feature": "vibe-coder-blog",
+      "chainDepth": "ui-data-only",
+      "assignee": "พลอย (Ploy)",
+      "dependsOn": ["T32"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "16 posts written across 4 levels, specific non-generic titles, prompt escalation genuinely distinct in KIND per level (not just length) verified via spot-check. Word counts in range after one expansion pass. tsc --noEmit + full build both 0 errors. FLAG for T34: blogLevels.ts path values have NO leading slash ('beginner' not '/beginner') unlike categories.ts convention (leading slash) — T34 must handle this explicitly (either route path matches bare segment, which is actually correct for a nested :level param route, or normalize — decide during T34, don't just copy categories.ts pattern blindly.",
+      "acceptanceCriteria": [
+        "src/data/blogLevels.ts: 4 BlogLevelConfig entries (beginner/junior/mid-level/senior) with real label/path/description/iconName",
+        "src/data/blog/{beginnerPosts,juniorPosts,midLevelPosts,seniorPosts}.ts + index.ts barrel created, 16 BlogPost entries total (4 per level: best-practice, quick-guide, prompt, workflow)",
+        "Each piece 300-600 words, follows the per-type skeleton from the plan (Best Practice: Practice/Why-It-Matters/How-to-Apply/Common-Mistake; Quick Guide: Goal/Numbered-steps/If-Stuck; Prompt: Framing/prompt-block/Why-it-works; Workflow: Overview/Phased-steps/What-NOT-to-do-yet)",
+        "Prompt pieces' promptText scales in sophistication across levels per the plan's concrete examples (Beginner=scaffold-heavy+comments, Junior=constraint+acceptance-criteria, Mid=reasoning-before-generate+tradeoffs, Senior=architecture-critique-seeking) — genuinely distinct in voice and technical depth per level, not the same prompt reworded",
+        "Content is genuinely useful, senior-engineer-quality writing — no generic filler, no placeholder text, real actionable guidance specific to each level's actual pain points",
+        "npm run build (tsc) passes 0 errors on the new data files"
+      ]
+    },
+    {
+      "id": "T34",
+      "title": "Vibe Coder Blog: build BlogIndex + BlogLevelPage pages, dynamic /blog/:level route, nav/footer wiring",
+      "layer": "ui",
+      "feature": "vibe-coder-blog",
+      "chainDepth": "component-then-integration",
+      "assignee": "ออม (Aom)",
+      "dependsOn": ["T33"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "BlogIndex + BlogLevelPage built, first dynamic :level route in codebase works correctly (matched by config.path, not index). Live post counts (4/4/4/4). Invalid-URL fallback works gracefully. Nav active-state correct on nested routes. Full dark: support (correct, since this is prose content not demo). Footer link wired. Build 0 errors, all routes browser-verified.",
+      "acceptanceCriteria": [
+        "src/pages/BlogIndex.tsx: 4-level overview grid at /blog, same visual idiom as Home.tsx's category grid, links to each /blog/:level",
+        "src/pages/BlogLevelPage.tsx: reads :level param via useParams, looks up matching BlogLevelConfig by path (not array index), filters blogPosts by level, renders the 4 content-type pieces as stacked section-cards (NOT tabs/accordion) using CopyBox for the Prompt piece's promptText",
+        "App.tsx: new nested routes — <Route path='blog'><Route index element={<BlogIndex/>}/><Route path=':level' element={<BlogLevelPage/>}/></Route> (first dynamic route in this codebase, confirm react-router-dom v7 syntax is correct)",
+        "ClayShell.tsx: new 'Blog' NavLink in the ml-auto header group, before About, distinct icon (e.g. BookOpen or Newspaper, not colliding with UX/UI Keyword's BookOpenText or About's Info)",
+        "Footer.tsx: new Link to /blog, both links wrapped in a flex gap-4 sub-container so justify-between still separates copyright from the links cluster",
+        "Build 0 errors, all 5 blog routes (/blog + 4x /blog/:level) verified in browser with zero console errors, NavLink active-state correctly highlights on nested /blog/:level paths too"
+      ]
+    },
+    {
+      "id": "T35",
+      "title": "Expand About page stats to include glossary term count + blog post count",
+      "layer": "ui",
+      "feature": "full-regression-qa",
+      "chainDepth": "integration-only",
+      "assignee": "เบล (Bell)",
+      "dependsOn": ["T30", "T33"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "Stats grid extended (grid-cols-2 sm:grid-cols-4) with 2 new live-computed tiles. Independently verified final counts: 86 styles, 10 categories, 10 glossary terms, 16 blog posts — all match rendered /about page exactly. Per-category breakdown sums correctly (86). Noted UX/UI Keyword showing 0 styles in breakdown is correct-by-design (glossary is a separate array), not a bug. Build 0 errors.",
+      "acceptanceCriteria": [
+        "About.tsx's Stats section adds: total glossary terms (glossaryTerms.length), total blog posts (blogPosts.length) — computed live from imported data, NOT hardcoded, matching the existing 'no hardcoded numbers' convention already established for style/category counts",
+        "Existing style/category stats still correct after all the additions (should now show 68 styles / 10 categories, or whatever the true final counts are — verify against actual data, don't assume)",
+        "Build 0 errors, About page visually verified showing correct new numbers"
+      ]
+    },
+    {
+      "id": "T36",
+      "title": "Full regression QA across all 7 build steps (T25-T35)",
+      "layer": "ui",
+      "feature": "full-regression-qa",
+      "chainDepth": "cross-cutting",
+      "assignee": "แพร (Prae)",
+      "dependsOn": ["T28", "T29", "T31", "T34", "T35"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "FAIL on first pass (2 bugs, see T36b), then PASS on re-verification after T36b's fix. Re-verify independently recounted all data (86 styles/10 categories/10 glossary/16 blog posts) and confirmed both bugs fixed with zero regression on spot-checked routes. Component 9/9 individually retested, dark mode distinction confirmed correct, dynamic routing edge case, copy-to-clipboard both paths verified, build clean throughout. Full T25-T37 round confirmed complete and ready to ship.",
+      "acceptanceCriteria": [
+        "All routes load with zero console errors: 10 category pages + / + /about + /blog + 4x /blog/:level (16 routes total)",
+        "Style/category/glossary/blog counts verified against actual data files, cross-checked against Home page badges and About page stats — all numbers must agree",
+        "Component category: each of the 9 interactive demos manually re-tested (click-open, keyboard nav, Escape-close where applicable) — not rubber-stamped from T31's own report",
+        "Dark mode: spot-check across all new content types (Visual Effect, Component, Glossary, Blog) — outer card chrome dark-styled, demo content (where applicable) pixel-identical light/dark",
+        "Responsive check at narrowest achievable viewport for new pages",
+        "npm run build completes 0 errors",
+        "Explicit PASS/FAIL verdict, and if PASS with any noted gaps (be honest per prior precedent of flagging unverified checks rather than hiding them)"
+      ]
+    },
+    {
+      "id": "T37",
+      "title": "Security & dependency audit for this round (check for any new deps)",
+      "layer": "infra",
+      "feature": "full-regression-qa",
+      "chainDepth": "cross-cutting",
+      "assignee": "โบว์ (Bow)",
+      "dependsOn": ["T36"],
+      "securitySensitive": true,
+      "perfSensitive": false,
+      "status": "pass",
+      "note": "package.json unchanged, npm audit skipped as unnecessary. Zero dangerous patterns across all 49 override files + blog/glossary/copybox files. Component category confirmed 100% React-state-driven (Modal/Dropdown/Toast/Tooltip use useState, refs only for .focus()). Blog content confirmed static authored TS literals, no external source. useTheme.ts unchanged. Noted (non-blocking): 3 Visual Effect demos use ref-scoped imperative DOM for 60fps animation — standard pattern, self-cleaning, no injected content. Verdict PASS.",
+      "acceptanceCriteria": [
+        "npm audit re-run if package.json changed (e.g. if any new lib was pulled in for the Component category or Blog) — if unchanged, confirm explicitly and skip re-audit",
+        "No dangerouslySetInnerHTML/eval/innerHTML/unexpected external fetch in any new component (especially Blog content rendering, which is the first place long-form text is rendered — confirm it's plain JSX/string interpolation, not any markdown-parsing lib that could introduce XSS surface if one was added)",
+        "Verdict PASS or BLOCKED"
+      ]
+    },
+    {
+      "id": "T36b",
+      "title": "Fix T36's 2 QA findings: UX/UI Keyword count showing 0, stale hero/about copy",
+      "layer": "ui",
+      "feature": "full-regression-qa",
+      "chainDepth": "integration-only",
+      "assignee": "เบล (Bell)",
+      "dependsOn": ["T36"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "Minimal targeted fixes only (~8 lines), no over-engineering. Count bug: one-off special-case (getCategoryItemCount helper in Home.tsx, inline ternary in About.tsx) for ux-ui-keyword -> glossaryTerms.length. Stale copy: replaced hardcoded numbers/lists with qualitative phrasing that won't go stale again. Build 0 errors, browser-verified both fixes render correctly (UX/UI Keyword shows 10 in both places).",
+      "acceptanceCriteria": [
+        "Home.tsx and About.tsx's per-category count display shows the correct count for UX/UI Keyword (10, from glossaryTerms.length filtered appropriately) instead of 0 — minimal targeted fix, e.g. special-case that one category id to count glossaryTerms instead of styles, don't over-engineer a generic content-count abstraction for a one-category exception",
+        "Home.tsx hero copy updated to reflect actual current scope (not hardcoded '~30' — either compute live from styles.length+glossaryTerms.length+blogPosts.length, or a truthful updated static phrase, your call on which is more maintainable, but no more stale numbers)",
+        "About.tsx 'How to use it' category list updated to mention all 10 categories exist (or made generic enough not to need updating every time a category is added — your call)",
+        "npm run build passes 0 errors",
+        "Re-verify in browser: Home page shows 10 for UX/UI Keyword card, About per-category breakdown shows 10 for UX/UI Keyword, hero/about copy no longer stale"
+      ]
+    },
+    {
       "id": "T21",
       "title": "Reduce shadow-clay white-highlight intensity in dark mode",
       "layer": "ui",

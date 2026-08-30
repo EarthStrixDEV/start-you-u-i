@@ -4,6 +4,7 @@ import { styles } from "../data/styles";
 import StylePreviewCard from "../components/preview/StylePreviewCard";
 import StyleInfoPanel from "../components/preview/StyleInfoPanel";
 import EditorialMagazineDemo from "../components/overrides/EditorialMagazineDemo";
+import CommandPaletteDemo from "../components/overrides/CommandPaletteDemo";
 
 const category = categories.find((c) => c.id === "corporate-clean")!;
 const corporateCleanStyles = styles.filter((s) => s.categoryId === "corporate-clean");
@@ -11,6 +12,7 @@ const corporateCleanStyles = styles.filter((s) => s.categoryId === "corporate-cl
 // Maps a corporate-clean style id to its bespoke demo component.
 const demoRegistry: Record<string, ComponentType> = {
   "editorial-magazine-grid": EditorialMagazineDemo,
+  "command-palette-first": CommandPaletteDemo,
 };
 
 function CorporateCleanPage() {

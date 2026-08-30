@@ -7,6 +7,8 @@ import DoodleDemo from "../components/overrides/DoodleDemo";
 import IsometricDemo from "../components/overrides/IsometricDemo";
 import PapercraftCollageDemo from "../components/overrides/PapercraftCollageDemo";
 import CrayonScribbleDemo from "../components/overrides/CrayonScribbleDemo";
+import FeltPlushToyDemo from "../components/overrides/FeltPlushToyDemo";
+import PicnicGinghamDemo from "../components/overrides/PicnicGinghamDemo";
 
 const category = categories.find((c) => c.id === "playful-organic")!;
 const playfulOrganicStyles = styles.filter((s) => s.categoryId === "playful-organic");
@@ -17,6 +19,8 @@ const demoRegistry: Record<string, ComponentType> = {
   "isometric-3d": IsometricDemo,
   "papercraft-collage": PapercraftCollageDemo,
   "crayon-scribble": CrayonScribbleDemo,
+  "felt-plush-toy": FeltPlushToyDemo,
+  "picnic-pastel-gingham": PicnicGinghamDemo,
 };
 
 function PlayfulOrganicPage() {

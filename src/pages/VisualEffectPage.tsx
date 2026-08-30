@@ -3,34 +3,36 @@ import { categories } from "../data/categories";
 import { styles } from "../data/styles";
 import StylePreviewCard from "../components/preview/StylePreviewCard";
 import StyleInfoPanel from "../components/preview/StyleInfoPanel";
-import PixelArtDemo from "../components/overrides/PixelArtDemo";
-import Windows95Demo from "../components/overrides/Windows95Demo";
-import TerminalDosDemo from "../components/overrides/TerminalDosDemo";
-import CassetteFuturismDemo from "../components/overrides/CassetteFuturismDemo";
-import ArtDecoDemo from "../components/overrides/ArtDecoDemo";
-import RisographPrintDemo from "../components/overrides/RisographPrintDemo";
+import AnimatedUnderlineDemo from "../components/overrides/AnimatedUnderlineDemo";
+import RippleClickDemo from "../components/overrides/RippleClickDemo";
+import MagneticButtonDemo from "../components/overrides/MagneticButtonDemo";
+import CursorTrailDemo from "../components/overrides/CursorTrailDemo";
+import ParticleBurstDemo from "../components/overrides/ParticleBurstDemo";
+import SkeletonShimmerDemo from "../components/overrides/SkeletonShimmerDemo";
+import TiltCardDemo from "../components/overrides/TiltCardDemo";
 
-const category = categories.find((c) => c.id === "retro")!;
-const retroStyles = styles.filter((s) => s.categoryId === "retro");
+const category = categories.find((c) => c.id === "visual-effect")!;
+const visualEffectStyles = styles.filter((s) => s.categoryId === "visual-effect");
 
-// Maps a retro style id to its bespoke demo component.
+// Maps a visual-effect style id to its bespoke demo component.
 const demoRegistry: Record<string, ComponentType> = {
-  "pixel-art-8bit": PixelArtDemo,
-  "windows95-web1": Windows95Demo,
-  "terminal-dos-aesthetic": TerminalDosDemo,
-  "cassette-futurism": CassetteFuturismDemo,
-  "art-deco": ArtDecoDemo,
-  "risograph-print": RisographPrintDemo,
+  "animated-underline": AnimatedUnderlineDemo,
+  "ripple-click": RippleClickDemo,
+  "magnetic-button": MagneticButtonDemo,
+  "cursor-trail": CursorTrailDemo,
+  "particle-burst": ParticleBurstDemo,
+  "skeleton-shimmer": SkeletonShimmerDemo,
+  "tilt-3d-hover": TiltCardDemo,
 };
 
-function RetroPage() {
+function VisualEffectPage() {
   return (
     <div>
       <h1 className="text-2xl font-semibold text-slate-800">{category.label}</h1>
       <p className="mt-2 text-slate-500">{category.description}</p>
 
       <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-        {retroStyles.map((style) => {
+        {visualEffectStyles.map((style) => {
           if (style.demoKind === "generic") {
             return <StylePreviewCard key={style.id} style={style} />;
           }
@@ -61,4 +63,4 @@ function RetroPage() {
   );
 }
 
-export default RetroPage;
+export default VisualEffectPage;

@@ -9,12 +9,20 @@ function Footer() {
         <span>
           © {year} StartYou UI
         </span>
-        <Link
-          to="/about"
-          className="font-medium text-slate-500 transition-colors hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
-        >
-          About
-        </Link>
+        <div className="flex gap-4">
+          <Link
+            to="/blog"
+            className="font-medium text-slate-500 transition-colors hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+          >
+            Blog
+          </Link>
+          <Link
+            to="/about"
+            className="font-medium text-slate-500 transition-colors hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+          >
+            About
+          </Link>
+        </div>
       </div>
     </footer>
   );

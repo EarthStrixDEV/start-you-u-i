@@ -7,6 +7,9 @@ import {
   Sparkles,
   Briefcase,
   LayoutGrid,
+  Wand2,
+  BookOpenText,
+  PanelsTopLeft,
   type LucideIcon,
 } from "lucide-react";
 import { categories } from "../../data/categories";
@@ -22,6 +25,9 @@ const iconMap: Record<string, LucideIcon> = {
   Sparkles,
   Briefcase,
   LayoutGrid,
+  Wand2,
+  BookOpenText,
+  PanelsTopLeft,
 };
 
 function CategoryTabs() {

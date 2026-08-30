@@ -50,4 +50,25 @@ export const categories: CategoryConfig[] = [
     description: "Structural layout patterns to combine with any style above.",
     iconName: "LayoutGrid",
   },
+  {
+    id: "visual-effect",
+    label: "Visual Effect",
+    path: "/visual-effect",
+    description: "Hover, interaction, and animation effects to layer onto any style.",
+    iconName: "Wand2",
+  },
+  {
+    id: "ux-ui-keyword",
+    label: "UX/UI Keyword",
+    path: "/ux-ui-keyword",
+    description: "A glossary of UX/UI concepts senior devs and designers know.",
+    iconName: "BookOpenText",
+  },
+  {
+    id: "component",
+    label: "Component",
+    path: "/component",
+    description: "Interactive UI components — modals, dropdowns, tabs, and more.",
+    iconName: "PanelsTopLeft",
+  },
 ];

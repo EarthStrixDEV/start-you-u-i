@@ -7,11 +7,26 @@ import {
   Sparkles,
   Briefcase,
   LayoutGrid,
+  Wand2,
+  BookOpenText,
+  PanelsTopLeft,
   ArrowRight,
   type LucideIcon,
 } from "lucide-react";
 import { categories } from "../data/categories";
 import { styles } from "../data/styles";
+import { glossaryTerms } from "../data/glossaryTerms";
+import type { CategoryId } from "../data/types";
+
+// UX/UI Keyword glossary content lives in a separate `glossaryTerms` array,
+// not in `styles.ts` — special-case just that one category id rather than
+// building a generic "content source per category" abstraction for it.
+function getCategoryItemCount(categoryId: CategoryId): number {
+  if (categoryId === "ux-ui-keyword") {
+    return glossaryTerms.length;
+  }
+  return styles.filter((style) => style.categoryId === categoryId).length;
+}
 
 // Same icon-resolution convention as CategoryTabs.tsx — resolves the string
 // `iconName` from categories.ts to a real lucide-react component.
@@ -23,6 +38,9 @@ const iconMap: Record<string, LucideIcon> = {
   Sparkles,
   Briefcase,
   LayoutGrid,
+  Wand2,
+  BookOpenText,
+  PanelsTopLeft,
 };
 
 function Home() {
@@ -36,8 +54,9 @@ function Home() {
           Web UI Style Cheatsheet
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-base text-slate-600 sm:text-lg dark:text-slate-300">
-          A live-rendered reference of ~30 UI design style keywords, each shown with a
-          real, working component preview instead of a static screenshot.
+          A live-rendered reference of UI design style keywords, glossary concepts, and
+          components, each shown with a real, working component preview instead of a
+          static screenshot.
         </p>
         <Link
           to={firstCategoryPath}
@@ -52,9 +71,7 @@ function Home() {
       <section className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {categories.map((category) => {
           const Icon = iconMap[category.iconName] ?? Sparkles;
-          const styleCount = styles.filter(
-            (style) => style.categoryId === category.id,
-          ).length;
+          const styleCount = getCategoryItemCount(category.id);
 
           return (
             <Link

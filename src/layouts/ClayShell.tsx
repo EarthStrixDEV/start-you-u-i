@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { Palette, Sun, Moon, Info } from "lucide-react";
+import { Palette, Sun, Moon, Info, BookOpen } from "lucide-react";
 import CategoryTabs from "../components/nav/CategoryTabs";
 import Footer from "../components/layout/Footer";
 import useTheme from "../hooks/useTheme";
@@ -20,6 +20,20 @@ function ClayShell() {
         </div>
         <CategoryTabs />
         <div className="ml-auto flex items-center gap-2">
+          <NavLink
+            to="/blog"
+            className={({ isActive }) =>
+              [
+                "flex items-center gap-1.5 rounded-full px-4 py-2.5 text-sm font-medium shadow-clay-sm transition-all hover:shadow-clay",
+                isActive
+                  ? "scale-[0.98] bg-gradient-to-br from-violet-200 to-pink-200 text-slate-800 shadow-clay-inset dark:from-violet-500/40 dark:to-pink-500/40 dark:text-slate-100"
+                  : "bg-white/60 text-slate-600 dark:bg-slate-700/60 dark:text-slate-300",
+              ].join(" ")
+            }
+          >
+            <BookOpen className="h-4 w-4" aria-hidden="true" />
+            Blog
+          </NavLink>
           <NavLink
             to="/about"
             className={({ isActive }) =>

@@ -9,6 +9,11 @@ import DarkMoodyPage from "./pages/DarkMoodyPage";
 import PlayfulOrganicPage from "./pages/PlayfulOrganicPage";
 import CorporateCleanPage from "./pages/CorporateCleanPage";
 import LayoutKeywordsPage from "./pages/LayoutKeywordsPage";
+import VisualEffectPage from "./pages/VisualEffectPage";
+import UxUiKeywordPage from "./pages/UxUiKeywordPage";
+import ComponentPage from "./pages/ComponentPage";
+import BlogIndex from "./pages/BlogIndex";
+import BlogLevelPage from "./pages/BlogLevelPage";
 
 function App() {
   return (
@@ -23,6 +28,13 @@ function App() {
         <Route path="playful-organic" element={<PlayfulOrganicPage />} />
         <Route path="corporate-clean" element={<CorporateCleanPage />} />
         <Route path="layout-keywords" element={<LayoutKeywordsPage />} />
+        <Route path="visual-effect" element={<VisualEffectPage />} />
+        <Route path="ux-ui-keyword" element={<UxUiKeywordPage />} />
+        <Route path="component" element={<ComponentPage />} />
+        <Route path="blog">
+          <Route index element={<BlogIndex />} />
+          <Route path=":level" element={<BlogLevelPage />} />
+        </Route>
       </Route>
     </Routes>
   );

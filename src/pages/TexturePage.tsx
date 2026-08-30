@@ -7,6 +7,7 @@ import AuroraMeshDemo from "../components/overrides/AuroraMeshDemo";
 import GrainyGradientDemo from "../components/overrides/GrainyGradientDemo";
 import ChromeTextDemo from "../components/overrides/ChromeTextDemo";
 import HolographicIridescentDemo from "../components/overrides/HolographicIridescentDemo";
+import MarbleVeiningDemo from "../components/overrides/MarbleVeiningDemo";
 
 const category = categories.find((c) => c.id === "texture")!;
 const textureStyles = styles.filter((s) => s.categoryId === "texture");
@@ -17,6 +18,7 @@ const demoRegistry: Record<string, ComponentType> = {
   "grainy-gradient-noise": GrainyGradientDemo,
   "chrome-liquid-metal": ChromeTextDemo,
   "holographic-iridescent": HolographicIridescentDemo,
+  "marble-stone-veining": MarbleVeiningDemo,
 };
 
 function TexturePage() {
