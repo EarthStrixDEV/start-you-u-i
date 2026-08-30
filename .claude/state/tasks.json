@@ -1,0 +1,485 @@
+{
+  "generatedFrom": "C:\\Users\\mis\\.claude\\plans\\system-reminder-the-session-s-working-peppy-frog.md",
+  "plannedBy": "พลอย (Ploy) — Lead Planner",
+  "tasks": [
+    {
+      "id": "T01",
+      "title": "Vite scaffold + deps install",
+      "layer": "infra",
+      "feature": "project-scaffold",
+      "chainDepth": "infra-only",
+      "assignee": "ออม (Aom)",
+      "dependsOn": [],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "npx create-vite interactive prompt self-cancelled in non-TTY sandbox; Aom extracted create-vite@9.2.0's template-react-ts tarball contents directly (byte-identical to CLI output) as a verified fallback. Build succeeded (tsc -b && vite build, 0 errors). web-ui-style-cheatsheet.md survived untouched (8529 bytes, unchanged).",
+      "acceptanceCriteria": [
+        "npm create vite@latest . -- --template react-ts scaffolds into existing dir without deleting web-ui-style-cheatsheet.md",
+        "react-router-dom, lucide-react installed as deps",
+        "tailwindcss + @tailwindcss/vite installed as devDeps",
+        "npm run dev boots without error"
+      ]
+    },
+    {
+      "id": "T02",
+      "title": "Tailwind v4 wiring + index.css theme tokens",
+      "layer": "infra",
+      "feature": "project-scaffold",
+      "chainDepth": "infra-only",
+      "assignee": "ออม (Aom)",
+      "dependsOn": ["T01"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "@tailwindcss/vite wired in vite.config.ts. index.css: @import + @theme with 5 shadow tokens. Build verified 0 errors, .shadow-clay rules confirmed compiled in dist CSS. App.css emptied (had unrelated Vite counter-demo styles); App.tsx markup left untouched for T04 to replace.",
+      "acceptanceCriteria": [
+        "@tailwindcss/vite plugin wired in vite.config.ts",
+        "src/index.css has @import \"tailwindcss\"; plus @theme block with --shadow-clay/-sm/-inset and --shadow-neu/-inset tokens",
+        "A test element using shadow-clay renders visible dual-tone shadow"
+      ]
+    },
+    {
+      "id": "T03",
+      "title": "Data layer: types.ts, categories.ts, styles.ts",
+      "layer": "ui",
+      "feature": "data-layer",
+      "chainDepth": "ui-data-only",
+      "assignee": "เบล (Bell)",
+      "dependsOn": ["T01"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "33 style entries (8+5+5+3+4+3+5), generic/custom split 21/12 verified against authoritative custom list. tsc --noEmit 0 errors. AA-verified comments added for glassmorphism/neumorphism/liquid-glass. Self-corrected a miscategorization (memphis-design, blob-shapes) before reporting done.",
+      "acceptanceCriteria": [
+        "StyleConfig and CategoryConfig interfaces defined in types.ts",
+        "categories.ts has all 7 categories with id/label/path/icon",
+        "styles.ts has all 33 style entries (8+5+5+3+4+3+5) transcribed verbatim from web-ui-style-cheatsheet.md (name, feel, cssTell, promptText)",
+        "Each entry has demoKind set per plan's generic/custom split",
+        "tsc reports no type errors on the data files"
+      ]
+    },
+    {
+      "id": "T04",
+      "title": "ClayShell layout + CategoryTabs nav + routing skeleton",
+      "layer": "ui",
+      "feature": "clay-shell",
+      "chainDepth": "component-then-integration",
+      "assignee": "ออม (Aom)",
+      "dependsOn": ["T02", "T03"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "ClayShell + CategoryTabs + 8 stub pages (Home + 7 categories) created. App.tsx/main.tsx rewired with BrowserRouter + nested routes. Build 0 errors, runtime verified via curl on scratch dev server (killed after). All 7 route paths match categories.ts exactly.",
+      "acceptanceCriteria": [
+        "ClayShell.tsx renders header, pastel gradient bg, <Outlet/>",
+        "CategoryTabs.tsx renders 7 pill nav items sourced from categories.ts, active state uses shadow-clay-inset",
+        "App.tsx wires BrowserRouter + Routes for all 7 category paths + home, all pointing to placeholder pages",
+        "npm run dev shows nav switching between 7 empty pages without console errors"
+      ]
+    },
+    {
+      "id": "T05",
+      "title": "PreviewFrame + StylePreviewCard + StyleInfoPanel (generic mechanism)",
+      "layer": "ui",
+      "feature": "generic-preview-mechanism",
+      "chainDepth": "component-then-integration",
+      "assignee": "ออม (Aom)",
+      "dependsOn": ["T04"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "PreviewFrame/StylePreviewCard/StyleInfoPanel/clipboard.ts built. TexturePage wired: 5 generic styles rendered for real (Glassmorphism, Claymorphism, Neumorphism, Skeuomorphism, Liquid Glass), 3 custom placeholders (Aurora mesh, Grainy gradient, Chrome text). Build 0 errors, dev server smoke test passed, visually verified 3 styles produce genuinely distinct aesthetics from shared skeleton.",
+      "acceptanceCriteria": [
+        "PreviewFrame isolates its own background/text so shell clay style never bleeds into demo",
+        "StylePreviewCard renders demo.containerClass/accentClass/label/bgClass/textClass from a StyleConfig entry",
+        "StyleInfoPanel shows name/feel/cssTell/promptText with a working copy-to-clipboard button",
+        "TexturePage wired with 2-3 generic styles (e.g. Glassmorphism, Flat design) end-to-end, visually correct in dev server"
+      ]
+    },
+    {
+      "id": "T06",
+      "title": "Wire remaining generic-path styles across all 7 pages",
+      "layer": "ui",
+      "feature": "category-pages-generic-styles",
+      "chainDepth": "integration-only",
+      "assignee": "เบล (Bell)",
+      "dependsOn": ["T05"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "All 21 generic styles wired across 6 pages (texture 5 + flat-minimal 5 + retro 4 + dark-moody 2 + playful-organic 2 + corporate-clean 3 = 21, cross-checked against styles.ts grep). Build 0 errors, all 5 routes smoke-tested + screenshot verified.",
+      "acceptanceCriteria": [
+        "All ~18 generic-path styles render via StylePreviewCard across their correct category pages",
+        "No duplicate style entries, no missing generic styles per the plan's category breakdown",
+        "No console errors across all 7 pages"
+      ]
+    },
+    {
+      "id": "T07",
+      "title": "Custom override demos — Layout Keywords (5: bento, card, asymmetric grid, split-screen hero, sticky sidebar)",
+      "layer": "ui",
+      "feature": "custom-override-demos",
+      "chainDepth": "component-then-integration",
+      "assignee": "ออม (Aom)",
+      "dependsOn": ["T04"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "5 layout demos built + wired into LayoutKeywordsPage. Build 0 errors. Screenshot-verified in real Chrome tab: all 5 structurally distinct, no console errors, responsive via relative sizing (no fixed-px overflow).",
+      "acceptanceCriteria": [
+        "5 mini-layout demo components built (not button/card style) matching each layout keyword's mechanism",
+        "LayoutKeywordsPage wired with all 5, category 7 fully populated",
+        "Responsive: layouts don't visually break in a narrow viewport"
+      ]
+    },
+    {
+      "id": "T08",
+      "title": "Custom override demos — visual/animation styles (Pixel art, Glitchcore, Chrome text, Grainy gradient, Aurora mesh, Doodle, 3D isometric)",
+      "layer": "ui",
+      "feature": "custom-override-demos",
+      "chainDepth": "component-then-integration",
+      "assignee": "เบล (Bell)",
+      "dependsOn": ["T06"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "7 custom demos built + wired (Aurora, Grainy gradient, Chrome text, Pixel art, Glitchcore, Doodle, Isometric). index.css keyframes/.text-chrome/.crt-scanlines added below @theme (untouched). Build 0 errors. Screenshot-verified all 4 affected pages, glitchcore hover confirmed working, no console errors.",
+      "acceptanceCriteria": [
+        "7 custom components built per plan's §7 approach (keyframes/SVG filter/transform as specified)",
+        "Each wired into its correct category page",
+        "Shared keyframes/utility classes (glitch-jitter, text-chrome, crt-scanlines, pixelated) live in index.css, not duplicated per-component",
+        "No console errors, animations trigger correctly (hover states work)"
+      ]
+    },
+    {
+      "id": "T09",
+      "title": "Home page",
+      "layer": "ui",
+      "feature": "home-page",
+      "chainDepth": "component-then-integration",
+      "assignee": "ออม (Aom)",
+      "dependsOn": ["T07", "T08"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "Hero + 7 category cards with live style counts (8+5+5+3+4+3+5=33, computed not hardcoded). Build 0 errors. Navigation verified in real browser (clicked card, URL changed correctly).",
+      "acceptanceCriteria": [
+        "Home.tsx renders claymorphic hero + 7 category cards linking to each route",
+        "All 7 links navigate correctly"
+      ]
+    },
+    {
+      "id": "T10",
+      "title": "Polish + accessibility (WCAG AA) pass",
+      "layer": "ui",
+      "feature": "polish-accessibility",
+      "chainDepth": "cross-cutting",
+      "assignee": "แพร (Prae)",
+      "dependsOn": ["T09"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "Final QA: all 8 routes verified (33 style cards total, sum matches). Copy-to-clipboard + glitchcore hover confirmed working. Responsive checked at ~500px (browser tool floor, zero horizontal overflow on all routes). AA contrast visually verified for glassmorphism/neumorphism/liquid-glass, no fixes needed. Icons confirmed rendering everywhere. Build 0 errors x2. Verdict: PASS, no files touched, app ready.",
+      "acceptanceCriteria": [
+        "Glassmorphism and Neumorphism preview text manually verified >=4.5:1 contrast, comment added in styles.ts",
+        "Responsive check across all 7 pages at narrow viewport — grids collapse to 1 column without breakage",
+        "lucide-react icons present in nav/header/category cards",
+        "npm run build completes with no TypeScript errors"
+      ]
+    },
+    {
+      "id": "T11",
+      "title": "Security & dependency audit",
+      "layer": "infra",
+      "feature": "polish-accessibility",
+      "chainDepth": "cross-cutting",
+      "assignee": "โบว์ (Bow)",
+      "dependsOn": ["T01"],
+      "securitySensitive": true,
+      "perfSensitive": false,
+      "status": "pass_initial",
+      "note": "Initial pass after T01: npm audit 0 vulnerabilities across 113 deps, no wildcard versions, no postinstall hooks, lockfile intact. Verdict PASS. Will re-check after any major dep changes per plan.",
+      "acceptanceCriteria": [
+        "npm audit reviewed, no unresolved high/critical vulnerabilities in shipped deps",
+        "No secrets/keys committed",
+        "No unsafe innerHTML/dangerouslySetInnerHTML usage without justification"
+      ],
+      "note": "Runs opportunistically after T01 and re-checked after major dep changes; blocking per guardrails if any finding surfaces."
+    },
+    {
+      "id": "T12",
+      "title": "Plan 21 new style keywords (3/category) — names, feel, cssTell, promptText, demoKind assignment",
+      "layer": "ui",
+      "feature": "expanded-style-content",
+      "chainDepth": "planning-only",
+      "assignee": "พลอย (Ploy)",
+      "dependsOn": [],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "not_started",
+      "acceptanceCriteria": [
+        "Exactly 3 new distinct style keywords chosen per category (21 total), none duplicating any of the existing 33 ids/names",
+        "Each has a real Feel description, a concrete CSS/Tailwind tell, and a paste-ready prompt sentence, matching the voice/format of web-ui-style-cheatsheet.md rows",
+        "demoKind assigned per style (generic if expressible via GenericDemoConfig, custom if it needs bespoke markup) with a one-line reason",
+        "List reported back to Earth (via orchestrator) before T13 begins building demos"
+      ]
+    },
+    {
+      "id": "T13",
+      "title": "Add 21 new StyleConfig entries to styles.ts + wire generic ones into their category pages",
+      "layer": "ui",
+      "feature": "expanded-style-content",
+      "chainDepth": "ui-data-then-integration",
+      "assignee": "เบล (Bell)",
+      "dependsOn": ["T12"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "54 total styles (33+21), all ids unique. Per-category: texture 11, flat-minimal 8, retro 8, dark-moody 6, playful-organic 7, corporate-clean 6, layout-keywords 8 = 54. 10 generic wired for real, 11 custom show placeholders (added missing placeholder fallback to 5 pages that lacked it). Build 0 errors, browser smoke test all 7 pages passed. Self-caught + fixed an invalid Tailwind class before reporting.",
+      "acceptanceCriteria": [
+        "21 new entries appended to src/data/styles.ts per T12's spec, ids kebab-case and unique",
+        "Total style count now 54 (33 + 21), verified by count",
+        "Generic-demoKind new entries rendered via existing StylePreviewCard on their category page (no placeholder)",
+        "Custom-demoKind new entries show the same 'coming soon' placeholder pattern used in T05/T06, ready for T14",
+        "npm run build passes with 0 TypeScript errors"
+      ]
+    },
+    {
+      "id": "T14",
+      "title": "Build custom demo components for any new custom-demoKind styles from T12/T13",
+      "layer": "ui",
+      "feature": "expanded-style-content",
+      "chainDepth": "component-then-integration",
+      "assignee": "ออม (Aom)",
+      "dependsOn": ["T13"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "Correction: ground truth was 12 custom entries, not 11 (T13's report undercounted by one). All 12 built + wired: Holographic, Windows95, Terminal DOS, Cassette Futurism, Noir Film Grain, Deep Space, Papercraft, Crayon Scribble, Editorial Magazine, Masonry Grid, Z-Pattern, Timeline Feed. 3 pages converted from single-id-check to registry pattern to support multiple customs. Build 0 errors. Screenshot-verified all render distinctly (Masonry visually distinct from Bento/Card, Timeline distinct from Sticky Sidebar).",
+      "acceptanceCriteria": [
+        "One bespoke component per new custom-demoKind style, following the components/overrides/ convention from T07/T08",
+        "Each wired into its category page, replacing the placeholder",
+        "No console/build errors",
+        "Each demo visually reads as its named style, verified via screenshot"
+      ]
+    },
+    {
+      "id": "T15",
+      "title": "Theme toggle: ThemeContext/hook + toggle button + dark: styling on shell-only elements",
+      "layer": "ui",
+      "feature": "theme-toggle",
+      "chainDepth": "component-then-integration",
+      "assignee": "ออม (Aom)",
+      "dependsOn": ["T01"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "useTheme hook + @custom-variant dark (Tailwind v4 class-based, confirmed correct for v4.3.3) + Sun/Moon toggle in ClayShell header + dark: on ClayShell/CategoryTabs/StyleInfoPanel. Build 0 errors. Browser verified: toggle works, demo colors unaffected, persists on reload. Aom flagged: Home.tsx category cards not yet dark-styled — noted for T19 QA pass to catch.",
+      "acceptanceCriteria": [
+        "Theme state (light/dark) managed via React context or hook, persisted to localStorage, read on initial load without a flash-of-wrong-theme where feasible",
+        "Toggle button (Sun/Moon lucide icon) placed in ClayShell header, rightmost position alongside the About link",
+        "dark: Tailwind variants applied ONLY to shell/chrome elements: ClayShell background, header, CategoryTabs pills, StyleInfoPanel text/code/prompt block, Footer — NOT to any style preview demo's own bgClass/textClass/containerClass",
+        "Toggling actually changes shell appearance visibly and persists across a page reload",
+        "npm run build passes with 0 TypeScript errors"
+      ]
+    },
+    {
+      "id": "T16",
+      "title": "About page: content + route + header nav entry",
+      "layer": "ui",
+      "feature": "about-page",
+      "chainDepth": "component-then-integration",
+      "assignee": "เบล (Bell)",
+      "dependsOn": ["T13"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "About.tsx built (explanation/stats/credits/source), route wired, header nav entry (Info icon) added next to theme toggle in ClayShell. Stats verified live-computed (grepped for hardcoded 54/7, none found). Build 0 errors, browser nav + dark mode verified.",
+      "acceptanceCriteria": [
+        "New src/pages/About.tsx with: project/usage explanation, credits section (Earth, Min-Ju, Agent Team — list all 9 named roles), source attribution linking/naming web-ui-style-cheatsheet.md, and stats computed live from data/styles.ts + data/categories.ts (total style count, count per category) — no hardcoded numbers",
+        "Route /about added to App.tsx under the ClayShell layout route",
+        "Header nav entry linking to /about, placed near the theme toggle (depends on T15 being done or coordinate placement)",
+        "npm run build passes with 0 TypeScript errors"
+      ]
+    },
+    {
+      "id": "T17",
+      "title": "Footer component wired into ClayShell",
+      "layer": "ui",
+      "feature": "footer",
+      "chainDepth": "component-then-integration",
+      "assignee": "เบล (Bell)",
+      "dependsOn": ["T16"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "Footer.tsx created (live year, About link, dark: variants), wired into ClayShell after main. Build 0 errors. Browser verified on 3 routes + dark mode toggle.",
+      "acceptanceCriteria": [
+        "src/components/layout/Footer.tsx (or similar) with copyright text + app name + year, and a link to /about",
+        "Wired into ClayShell so it renders on every page automatically",
+        "Styled consistent with clay shell chrome conventions (and respects dark mode from T15)",
+        "npm run build passes with 0 TypeScript errors"
+      ]
+    },
+    {
+      "id": "T18",
+      "title": "Reorder StyleInfoPanel: name -> feel -> prompt -> cssTell",
+      "layer": "ui",
+      "feature": "info-panel-reorder",
+      "chainDepth": "integration-only",
+      "assignee": "เบล (Bell)",
+      "dependsOn": ["T01"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "Reorder done, build+browser verified. Bell flagged a concurrent edit from T15 (Aom) to the same file (dark: classes). Orchestrator re-read the merged file directly: both changes present correctly (name/feel/prompt/cssTell order AND dark: variants on every element), re-ran npm run build — 0 errors. No real conflict, safe merge.",
+      "acceptanceCriteria": [
+        "src/components/preview/StyleInfoPanel.tsx JSX order changed to name, feel, prompt block (with copy button), then cssTell code block",
+        "Copy-to-clipboard functionality still works unchanged",
+        "No visual/layout breakage on any existing style card",
+        "npm run build passes with 0 TypeScript errors"
+      ]
+    },
+    {
+      "id": "T15b",
+      "title": "Add dark: variants to Home.tsx category cards (gap flagged by Aom in T15)",
+      "layer": "ui",
+      "feature": "theme-toggle",
+      "chainDepth": "integration-only",
+      "assignee": "ออม (Aom)",
+      "dependsOn": ["T15"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "Hero + 7 category cards now have dark: variants matching ClayShell convention. Build 0 errors. Screenshot-verified light/dark toggle on Home page.",
+      "acceptanceCriteria": [
+        "src/pages/Home.tsx hero + 7 category cards get dark: variants matching the shell convention established in T15 (ClayShell/CategoryTabs)",
+        "Toggling theme on / visibly restyles hero and category cards, not just header/nav",
+        "npm run build passes 0 errors"
+      ]
+    },
+    {
+      "id": "T19",
+      "title": "Full regression QA + accessibility re-check across all new + existing content",
+      "layer": "ui",
+      "feature": "polish-accessibility",
+      "chainDepth": "cross-cutting",
+      "assignee": "แพร (Prae)",
+      "dependsOn": ["T14", "T15b", "T16", "T17", "T18"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "pass_with_noted_gap",
+      "note": "54 styles verified (11/8/8/6/7/6/8), 0 placeholders shown to users, theme toggle verified shell-only (computed-style diff confirmed demos byte-identical light/dark), 12 new custom demos confirmed distinct, StyleInfoPanel reorder confirmed, About/Footer confirmed, AA spot-check on new content passed (7.6-16.2:1). Build 0 errors x2. HONEST GAP: browser resize tool didn't actually shrink viewport this session (stuck at 1920px) — substituted static grid/overflow analysis matching T10's prior live-verified pattern, but true narrow-viewport render not re-confirmed live. Not a known defect, just an unverified check. Verdict: ready to ship, gap flagged not hidden.",
+      "acceptanceCriteria": [
+        "All 9 routes (/ + 7 categories + /about) load with zero console errors",
+        "Style count verified: 54 total across 7 categories, matching T12's per-category breakdown",
+        "Theme toggle tested: toggling actually changes shell, persists on reload, does NOT alter any style demo's own colors",
+        "Footer present and About link works on every page",
+        "New custom demos (from T14) visually verified distinct, not gray boxes",
+        "Responsive check repeated at narrow viewport for new content (About page, footer, expanded category grids)",
+        "npm run build completes with 0 TypeScript errors",
+        "Explicit PASS/FAIL verdict with specifics if FAIL"
+      ]
+    },
+    {
+      "id": "T20",
+      "title": "Security & dependency re-audit (if any new deps added, e.g. for theme persistence)",
+      "layer": "infra",
+      "feature": "theme-toggle",
+      "chainDepth": "cross-cutting",
+      "assignee": "โบว์ (Bow)",
+      "dependsOn": ["T15"],
+      "securitySensitive": true,
+      "perfSensitive": false,
+      "status": "pass",
+      "note": "package.json unchanged since T11 — audit skipped as unnecessary, T11's 0-vuln result stands. localStorage confirmed safe (typed light|dark string only, invalid values fall back safely). No dangerouslySetInnerHTML/eval/innerHTML/external fetch anywhere. SVG feTurbulence filters confirmed pure presentational, no external refs. Verdict PASS.",
+      "acceptanceCriteria": [
+        "npm audit re-run if package.json changed since T11; if no new deps were added, confirm that explicitly and skip re-audit",
+        "No secrets/keys committed",
+        "localStorage usage for theme preference reviewed — confirmed it only stores a 'light'|'dark' string, nothing sensitive"
+      ]
+    },
+    {
+      "id": "T24",
+      "title": "Further reduce dark-mode shadow-clay highlight: shift RGB channel from white(255) toward gray(~50), not just lower alpha",
+      "layer": "ui",
+      "feature": "dark-shadow-tokens",
+      "chainDepth": "integration-only",
+      "assignee": "ออม (Aom)",
+      "dependsOn": ["T23"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "Highlight RGB shifted 255,255,255 -> 50,50,50 in .dark block for shadow-clay/-sm/-inset. Alpha re-tuned up (0.3-0.4) since dark-gray at old low alpha was invisible. Light-mode @theme block confirmed untouched. Build 0 errors, zoomed screenshot confirms no white glare, reads as soft embossed dark-mode edge. Light mode confirmed unchanged.",
+      "acceptanceCriteria": [
+        "In src/index.css's .dark override block, the highlight component of --shadow-clay/-sm/-inset changes its RGB channel from rgba(255,255,255,x) to approximately rgba(50,50,50,x) or similar dark-gray value (Earth's explicit ask: 'reduce from about 255 to 50') — not just tune alpha again",
+        "Re-tune alpha for the new base color as needed so the highlight still reads as a barely-there soft edge, not fully invisible and not a visible gray smear",
+        "Light-mode (non-.dark) tokens remain completely untouched",
+        "Visually verify in dark mode: header/nav/card shadows show no bright glare at all now",
+        "npm run build passes 0 errors"
+      ]
+    },
+    {
+      "id": "T21",
+      "title": "Reduce shadow-clay white-highlight intensity in dark mode",
+      "layer": "ui",
+      "feature": "dark-shadow-tokens",
+      "chainDepth": "integration-only",
+      "assignee": "ออม (Aom)",
+      "dependsOn": ["T15"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": ".dark override block added to index.css redefining shadow-clay/-sm/-inset with near-imperceptible white highlight (0.03-0.04 alpha) and stronger dark component (0.35-0.45), tuned iteratively after visual check (not just pasted starting suggestion). shadow-neu skipped — confirmed via grep it's never actually used as a utility class anywhere. CSS-only change, no components touched. Build 0 errors, screenshot-verified light mode untouched / dark mode glare gone.",
+      "acceptanceCriteria": [
+        "src/index.css gets a `.dark { --shadow-clay: ...; --shadow-clay-sm: ...; --shadow-clay-inset: ...; }` override block (or equivalent) redefining the white-highlight rgba alpha to a lower value (e.g. 0.06-0.10 instead of 0.6-0.7) so shadows read as a subtle glow on dark backgrounds instead of a bright white glare",
+        "shadow-neu/-neu-inset tokens get the same treatment if they're used anywhere in dark-mode-visible chrome (check usage first — skip if genuinely unused in shell context)",
+        "Existing shadow-clay usages across ClayShell/CategoryTabs/StyleInfoPanel/Footer automatically pick up the dimmer dark values with NO class changes needed (since it's the same utility name, just a different CSS var value under .dark)",
+        "Visually verify in dark mode: shadows read as subtle depth, not a bright white halo",
+        "npm run build passes with 0 TypeScript errors"
+      ]
+    },
+    {
+      "id": "T22",
+      "title": "Add dark: variants to outer preview-card wrappers (StylePreviewCard + all overrides)",
+      "layer": "ui",
+      "feature": "preview-card-outer-dark",
+      "chainDepth": "integration-only",
+      "assignee": "เบล (Bell)",
+      "dependsOn": ["T21"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "done",
+      "note": "dark:bg-slate-800/80 added to StylePreviewCard outer div + every page's own custom-demo wrapper + placeholder wrapper. overrides/*.tsx files confirmed to have no wrapper of their own (page files own the wrapper) — correctly untouched. PreviewFrame + all demo internals confirmed untouched. Build 0 errors, screenshot-verified demo content pixel-identical light/dark across 3 different card types. FLAG: Bell ran `taskkill /F /IM node.exe` which kills ALL node processes system-wide, not scoped — orchestrator noting this for awareness, no other node process was known to be running at the time so no reported impact. Verified FlatMinimalPage's 'coming soon' branch is unreachable dead code (all 8 flat-minimal styles are demoKind:generic) — not a live regression, just leftover defensive code from the shared page template; left as-is, non-blocking.",
+      "acceptanceCriteria": [
+        "src/components/preview/StylePreviewCard.tsx outer div (currently `rounded-[2rem] bg-white/80 shadow-clay p-6`) gets dark: bg + dark:shadow-clay variant matching ClayShell's established convention (e.g. dark:bg-slate-800/80)",
+        "Every file in src/components/overrides/ and any category page (LayoutKeywordsPage etc.) that defines its OWN outer card wrapper (not going through StylePreviewCard) gets the same dark: treatment on that outer wrapper only",
+        "PreviewFrame.tsx and all demo-internal content/classes (containerClass/accentClass/textClass/bgClass from data, and every override component's actual demo markup) remain COMPLETELY untouched — this is outer-card-chrome-only, per Earth's explicit confirmation",
+        "Visually verify: toggling dark mode restyles the card chrome around each demo, while every demo itself still looks pixel-identical to its light-mode rendering",
+        "npm run build passes with 0 TypeScript errors"
+      ]
+    },
+    {
+      "id": "T23",
+      "title": "Regression QA for T21/T22",
+      "layer": "ui",
+      "feature": "preview-card-outer-dark",
+      "chainDepth": "cross-cutting",
+      "assignee": "แพร (Prae)",
+      "dependsOn": ["T22"],
+      "securitySensitive": false,
+      "perfSensitive": false,
+      "status": "pass",
+      "note": "Shadow glare confirmed fixed in dark mode, light mode unchanged. 10+ cards across 4 pages checked, demo content pixel-identical light/dark in all cases. Code-level verification: grepped PreviewFrame.tsx + all 23 overrides/*.tsx files, zero dark: classes found anywhere in demo content — scope boundary held structurally, not just visually. Full 9-route sweep clean, no console errors. Full regression check (persistence, links, copy button, counts) all PASS. Build 0 errors. Verdict: PASS, ready to ship.",
+      "acceptanceCriteria": [
+        "Spot-check 6-8 style cards across different categories in dark mode: outer card chrome dark-styled, demo content inside pixel-identical to light mode (screenshot compare)",
+        "Shadow-clay glow visually subtle in dark mode, not a bright white glare, on header/nav/footer/cards",
+        "Toggle back to light mode, confirm no regression (cards look exactly as they did before this change)",
+        "All 9 routes still load with zero console errors",
+        "npm run build completes with 0 TypeScript errors",
+        "Explicit PASS/FAIL verdict"
+      ]
+    }
+  ]
+}

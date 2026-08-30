@@ -1,0 +1,116 @@
+{
+  "project": "StartYou(U)I — Web UI Style Cheatsheet",
+  "designedBy": "พลอย (Ploy) — Lead Planner",
+  "createdAt": "2026-08-30",
+  "summary": "Static React+Vite+Tailwind frontend, no DB/API layers needed. Chain depth per feature is shallow: most features are UI-only (component -> integration into page), no backend/state-management chain required beyond React Router.",
+  "layersInScope": ["infra", "ui"],
+  "layersOutOfScope": ["db", "api", "backend-logic"],
+  "featureChains": [
+    {
+      "feature": "project-scaffold",
+      "chainDepth": "infra-only",
+      "chain": ["infra"],
+      "reason": "Vite scaffold, Tailwind v4 wiring, deps install — no UI logic yet"
+    },
+    {
+      "feature": "data-layer",
+      "chainDepth": "ui-data-only",
+      "chain": ["ui"],
+      "reason": "Typed style/category config powering all preview cards — pure data, no component yet"
+    },
+    {
+      "feature": "clay-shell",
+      "chainDepth": "component-then-integration",
+      "chain": ["ui:component", "ui:integration"],
+      "reason": "Shell chrome (header/nav/bg) is a component that must then be wired into routing"
+    },
+    {
+      "feature": "generic-preview-mechanism",
+      "chainDepth": "component-then-integration",
+      "chain": ["ui:component", "ui:integration"],
+      "reason": "PreviewFrame + StylePreviewCard + StyleInfoPanel built then wired into first category page to validate pattern before mass rollout"
+    },
+    {
+      "feature": "category-pages-generic-styles",
+      "chainDepth": "integration-only",
+      "chain": ["ui:integration"],
+      "reason": "Reuses validated generic preview mechanism — just data wiring across 7 pages, no new component logic"
+    },
+    {
+      "feature": "custom-override-demos",
+      "chainDepth": "component-then-integration",
+      "chain": ["ui:component", "ui:integration"],
+      "reason": "12 structurally distinct components (glitchcore, pixel art, layout keywords, etc.) each need bespoke markup/CSS then wiring into their page"
+    },
+    {
+      "feature": "home-page",
+      "chainDepth": "component-then-integration",
+      "chain": ["ui:component", "ui:integration"],
+      "reason": "Depends on all category routes existing"
+    },
+    {
+      "feature": "polish-accessibility",
+      "chainDepth": "cross-cutting",
+      "chain": ["ui:audit"],
+      "reason": "Manual WCAG AA contrast pass + responsive check across all completed cards — audit only, no new components"
+    }
+  ],
+  "revisions": [
+    {
+      "date": "2026-08-30",
+      "revisedBy": "พลอย (Ploy) — Lead Planner",
+      "reason": "Earth (user) added 6 new requirements after grill-me session: (1) +21 new style keywords (3/category), (2) dark/light mode toggle scoped to shell only, (3) new /about page, (4) About nav entry in header, (5) footer on every page, (6) StyleInfoPanel field reorder (prompt before cssTell). All confirmed via AskUserQuestion before this revision — see conversation. New feature chains appended below; T01-T11 (v1 scope) unaffected and remain done.",
+      "newFeatureChains": [
+        {
+          "feature": "expanded-style-content",
+          "chainDepth": "ui-data-then-integration",
+          "chain": ["ui:data", "ui:integration"],
+          "reason": "21 new StyleConfig entries (data-only, like original data-layer) then wired into existing 7 pages via the same generic/custom mechanisms already built — no new component patterns needed for generic ones; custom ones each need bespoke demo components same as T07/T08"
+        },
+        {
+          "feature": "theme-toggle",
+          "chainDepth": "component-then-integration",
+          "chain": ["ui:component", "ui:integration"],
+          "reason": "ThemeContext/hook + toggle button component, then wired into ClayShell + localStorage persistence + all shell-only elements (header, nav, StyleInfoPanel text) restyled with dark: variants"
+        },
+        {
+          "feature": "about-page",
+          "chainDepth": "component-then-integration",
+          "chain": ["ui:component", "ui:integration"],
+          "reason": "New page + new route + new header nav entry, depends on final style/category counts being known (reads from data layer for stats)"
+        },
+        {
+          "feature": "footer",
+          "chainDepth": "component-then-integration",
+          "chain": ["ui:component", "ui:integration"],
+          "reason": "New Footer component wired into ClayShell (renders on every page automatically via layout route)"
+        },
+        {
+          "feature": "info-panel-reorder",
+          "chainDepth": "integration-only",
+          "chain": ["ui:integration"],
+          "reason": "Pure JSX reorder in an existing component, no new logic"
+        }
+      ]
+    },
+    {
+      "date": "2026-08-30",
+      "revisedBy": "พลอย (Ploy) — Lead Planner",
+      "reason": "Earth (via /agent-team-swe re-invocation) requested 2 small polish fixes after v2 shipped: (1) outer preview-card wrapper (bg/shadow only) should respond to dark mode — demo content itself stays untouched, confirmed via AskUserQuestion this is scoped to StylePreviewCard + override components' outer card div, NOT PreviewFrame or demo internals; (2) shadow-clay's white highlight (rgba(255,255,255,0.7)) is too intense against a dark shell background and needs reduced intensity in dark mode. Both are small, well-scoped CSS/JSX-class-only changes — no new components, no new data, so this does not need the full T12-style multi-task chain.",
+      "newFeatureChains": [
+        {
+          "feature": "dark-shadow-tokens",
+          "chainDepth": "integration-only",
+          "chain": ["ui:integration"],
+          "reason": "shadow-clay/-sm/-inset tokens are static @theme CSS vars — Tailwind v4 can't make a single utility class conditionally dark via @theme alone, so this needs a .dark scope override block in index.css redefining the --shadow-clay* custom properties with reduced white-highlight alpha. Pure CSS, no component logic."
+        },
+        {
+          "feature": "preview-card-outer-dark",
+          "chainDepth": "integration-only",
+          "chain": ["ui:integration"],
+          "reason": "Add dark: variants to the outer card div's bg/shadow classes across StylePreviewCard.tsx and every components/overrides/*.tsx file that has its own outer card wrapper (the layout-keyword and custom demos each define their own outer card since they don't go through StylePreviewCard) — mechanical, repeated small edit, no new logic. Depends on dark-shadow-tokens landing first so the shadow-clay utility itself is already dark-aware before cards start using dark:shadow-clay."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --shadow-clay: 8px 8px 16px rgba(163,140,201,0.25), -8px -8px 16px rgba(255,255,255,0.7);
+  --shadow-clay-sm: 4px 4px 10px rgba(163,140,201,0.22), -4px -4px 10px rgba(255,255,255,0.65);
+  --shadow-clay-inset: inset 3px 3px 6px rgba(163,140,201,0.18), inset -3px -3px 6px rgba(255,255,255,0.6);
+  --shadow-neu: 6px 6px 12px rgba(163,177,198,0.6), -6px -6px 12px rgba(255,255,255,0.8);
+  --shadow-neu-inset: inset 4px 4px 8px rgba(163,177,198,0.5), inset -4px -4px 8px rgba(255,255,255,0.7);
+}
+
+/*
+ * Dark-mode shadow overrides.
+ * The light-mode --shadow-clay* tokens above pair a purple-tinted dark shadow
+ * with a bright white highlight (rgba 255,255,255 @ 0.6-0.7) tuned for the
+ * pastel light background. Against the dark slate shell that highlight reads
+ * as a harsh glare instead of a soft embossed edge.
+ *
+ * IMPORTANT: Tailwind v4 bakes @theme values into each utility's box-shadow
+ * as static hex literals at build time (e.g. `.shadow-clay-sm{box-shadow:
+ * ...,#ffffffa6}`) rather than emitting `var(--shadow-clay-sm)` at runtime.
+ * That means redefining the --shadow-clay* custom properties under a `.dark`
+ * scope (as a previous pass here did) has ZERO effect on the already-compiled
+ * utility classes — confirmed by inspecting dist output. The only way to
+ * actually change the rendered shadow under dark mode is to override the
+ * `box-shadow` property directly with a real CSS rule scoped to `.dark`,
+ * which beats the utility class by source order (this block is loaded after
+ * Tailwind's generated utilities).
+ *
+ * --shadow-neu / --shadow-neu-inset are intentionally NOT overridden here —
+ * grep across src/ found no `shadow-neu`/`shadow-neu-inset` class usage in
+ * any component (only shadow-clay/-sm/-inset are actually applied), so there
+ * is no dark-visible chrome that would render them.
+ */
+.dark .shadow-clay {
+  box-shadow: 8px 8px 16px rgba(0,0,0,0.45), -8px -8px 16px rgba(54,69,79,0.45) !important;
+}
+.dark .shadow-clay-sm {
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.4), -4px -4px 10px rgba(54,69,79,0.4) !important;
+}
+.dark .shadow-clay-inset {
+  box-shadow: inset 3px 3px 6px rgba(0,0,0,0.35), inset -3px -3px 6px rgba(54,69,79,0.35) !important;
+}
+
+@keyframes glitch-jitter {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-2px, 1px); }
+  40% { transform: translate(2px, -1px); }
+  60% { transform: translate(-1px, 2px); }
+  80% { transform: translate(1px, -2px); }
+}
+
+.text-chrome {
+  background-image: linear-gradient(100deg, #6b7280 0%, #f9fafb 25%, #9ca3af 50%, #f3f4f6 75%, #6b7280 100%);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.crt-scanlines {
+  background-image: repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 3px);
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
