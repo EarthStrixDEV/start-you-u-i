@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StartYou UI — Texture / Material</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", sans-serif;
+    display: flex;
+    justify-content: center;
+    background: #e9e5f0;
+  }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: -apple-system, "Segoe UI", sans-serif; }
+    .clay-shell { background: linear-gradient(135deg, #fdf1e7 0%, #eef3ff 55%, #f6ecff 100%); }
+    .clay { box-shadow: 8px 8px 16px rgba(163,140,201,0.25), -8px -8px 16px rgba(255,255,255,0.7); }
+    .clay-sm { box-shadow: 4px 4px 10px rgba(163,140,201,0.22), -4px -4px 10px rgba(255,255,255,0.65); }
+    .clay-inset { box-shadow: inset 3px 3px 6px rgba(163,140,201,0.18), inset -3px -3px 6px rgba(255,255,255,0.6); }
+    .clay-icon { background: linear-gradient(135deg, #fbcfe8 0%, #ddd6fe 100%); }
+    .clay-active { background: linear-gradient(135deg, #ddd6fe 0%, #fbcfe8 100%); }
+    .clay-card { background: rgba(255,255,255,0.82); }
+  
+</style>
+</head>
+<body>
+<div class="clay-shell" style="width:100%; max-width:1560px; min-height:100vh; padding:28px; display:flex; gap:24px; align-items:flex-start; font-family:-apple-system,sans-serif;">
+
+  <!-- SIDEBAR (collapsed reference, "Texture" active) -->
+  <div class="clay clay-card" style="position:relative; width:260px; flex-shrink:0; border-radius:2rem; padding:20px 14px; opacity:0.75;">
+    <div style="display:flex; align-items:center; gap:10px; padding:2px 8px; margin-bottom:16px;">
+      <div class="clay-icon clay-sm" style="width:34px; height:34px; border-radius:0.8rem;"></div>
+      <div style="font-size:12px; font-weight:700; color:#1e293b;">StartYou UI</div>
+    </div>
+    <div class="clay-active clay-inset" style="border-radius:0.9rem; padding:8px 10px; display:flex; align-items:center; gap:9px;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#57534e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/></svg>
+      <span style="font-size:11px; font-weight:600; color:#292524;">Texture / Material</span>
+    </div>
+  </div>
+
+  <!-- MAIN COLUMN -->
+  <div style="flex:1; min-width:0;">
+
+    <div style="display:flex; align-items:center; gap:6px; margin-bottom:18px; font-size:11px; color:#a8a29e;">
+      <span>StartYou UI</span>
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#c4c4cc" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      <span style="color:#78716c; font-weight:600;">Texture / Material</span>
+    </div>
+
+    <!-- ============ PAGE HEADER + FILTERS ============ -->
+    <div class="clay clay-card" style="border-radius:1.8rem; padding:24px 28px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div class="clay-icon clay-sm" style="width:38px; height:38px; border-radius:1rem; display:flex; align-items:center; justify-content:center;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#57534e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/></svg>
+          </div>
+          <h1 style="font-size:22px; font-weight:800; color:#1e293b; margin:0;">Texture / Material</h1>
+        </div>
+        <span class="clay-sm" style="background:#fff; border-radius:999px; padding:6px 15px; font-size:11px; font-weight:600; color:#78716c;">8 styles</span>
+      </div>
+      <p style="font-size:13px; color:#78716c; margin:10px 0 0 50px;">Frosted glass, clay, and material-mimicking surface styles.</p>
+
+      <div style="display:flex; gap:8px; margin-top:18px; align-items:center; flex-wrap:wrap;">
+        <div class="clay-active clay-inset" style="border-radius:999px; padding:6px 15px; font-size:11px; font-weight:700; color:#292524;">All</div>
+        <div style="border-radius:999px; padding:6px 15px; font-size:11px; color:#78716c; border:1.5px solid rgba(120,113,108,0.2);">Interactive only</div>
+        <div style="border-radius:999px; padding:6px 15px; font-size:11px; color:#78716c; border:1.5px solid rgba(120,113,108,0.2);">A–Z</div>
+        <div style="flex:1;"></div>
+        <div class="clay-sm" style="background:#fff; border-radius:0.7rem; padding:6px 10px; display:flex;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#292524" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
+        <div style="border-radius:0.7rem; padding:6px 10px; display:flex; border:1.5px solid rgba(120,113,108,0.2);"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a8a29e" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div>
+      </div>
+    </div>
+
+    <!-- ============ STYLE CARD GRID (real content) ============ -->
+    <div style="margin-top:40px; display:grid; grid-template-columns:repeat(2,1fr); gap:22px;">
+
+      <!-- Claymorphism -->
+      <div class="clay clay-card" style="border-radius:1.7rem; padding:20px; display:flex; flex-direction:column; gap:14px;">
+        <div style="border-radius:1.1rem; min-height:160px; background:#fff7ed; display:flex; align-items:center; justify-content:center; padding:20px; position:relative;">
+          <div style="border-radius:1.4rem; background:#fed7aa; padding:22px; text-align:center; box-shadow:8px 8px 16px rgba(0,0,0,0.15),-8px -8px 16px rgba(255,255,255,0.8);">
+            <p style="font-size:11px; font-weight:600; color:#7c2d12; margin:0 0 12px;">Claymorphism</p>
+            <span style="background:#fdba74; color:#7c2d12; font-size:11px; font-weight:700; padding:9px 18px; border-radius:999px; box-shadow:4px 4px 8px rgba(0,0,0,0.15),-4px -4px 8px rgba(255,255,255,0.7);">Squishy Button</span>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <h3 style="font-size:15px; font-weight:700; color:#1e293b; margin:0;">Claymorphism</h3>
+            <div style="width:26px; height:26px; border-radius:0.6rem; display:flex; align-items:center; justify-content:center; border:1.5px solid rgba(120,113,108,0.2);"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#78716c" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div>
+          </div>
+          <p style="font-size:12px; color:#78716c; margin:8px 0 0;">Puffy, soft, toy-like, playful</p>
+          <div style="border-radius:0.8rem; border-left:3px solid #a855f7; background:#faf5ff; padding:9px 11px; margin-top:11px;">
+            <p style="font-size:11px; color:#6b21a8; font-style:italic; margin:0;">"claymorphic UI — rounded puffy elements, soft inner glow, pastel colors, looks squishable"</p>
+          </div>
+          <code style="display:inline-block; margin-top:9px; font-size:10px; color:#78716c; background:#f5f5f4; padding:5px 9px; border-radius:0.5rem;">border-radius, dual soft shadow, pastel fill</code>
+        </div>
+      </div>
+
+      <!-- Glassmorphism -->
+      <div class="clay clay-card" style="border-radius:1.7rem; padding:20px; display:flex; flex-direction:column; gap:14px;">
+        <div style="border-radius:1.1rem; min-height:160px; background:linear-gradient(135deg,#6366f1,#a855f7,#ec4899); display:flex; align-items:center; justify-content:center; padding:20px;">
+          <div style="border-radius:1.2rem; background:rgba(255,255,255,0.14); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.25); padding:20px; text-align:center;">
+            <p style="font-size:11px; font-weight:600; color:#fff; margin:0 0 12px;">Glassmorphism</p>
+            <span style="background:rgba(255,255,255,0.2); color:#fff; font-size:11px; font-weight:700; padding:9px 18px; border-radius:0.7rem; border:1px solid rgba(255,255,255,0.35);">Frosted Panel</span>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <h3 style="font-size:15px; font-weight:700; color:#1e293b; margin:0;">Glassmorphism</h3>
+            <div style="width:26px; height:26px; border-radius:0.6rem; display:flex; align-items:center; justify-content:center; border:1.5px solid rgba(120,113,108,0.2);"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#78716c" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div>
+          </div>
+          <p style="font-size:12px; color:#78716c; margin:8px 0 0;">Frosted glass, floating, futuristic</p>
+          <div style="border-radius:0.8rem; border-left:3px solid #a855f7; background:#faf5ff; padding:9px 11px; margin-top:11px;">
+            <p style="font-size:11px; color:#6b21a8; font-style:italic; margin:0;">"glassmorphism cards with backdrop blur, semi-transparent white background, thin light border"</p>
+          </div>
+          <code style="display:inline-block; margin-top:9px; font-size:10px; color:#78716c; background:#f5f5f4; padding:5px 9px; border-radius:0.5rem;">backdrop-blur-lg bg-white/10 border-white/20</code>
+        </div>
+      </div>
+
+      <!-- Neumorphism -->
+      <div class="clay clay-card" style="border-radius:1.7rem; padding:20px; display:flex; flex-direction:column; gap:14px;">
+        <div style="border-radius:1.1rem; min-height:160px; background:#e2e8f0; display:flex; align-items:center; justify-content:center; padding:20px;">
+          <span style="background:#e2e8f0; color:#1e293b; font-size:11px; font-weight:700; padding:11px 20px; border-radius:0.9rem; box-shadow:6px 6px 12px rgba(163,177,198,0.6),-6px -6px 12px rgba(255,255,255,0.8);">Extruded Button</span>
+        </div>
+        <div>
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <h3 style="font-size:15px; font-weight:700; color:#1e293b; margin:0;">Neumorphism / Soft UI</h3>
+            <div style="width:26px; height:26px; border-radius:0.6rem; display:flex; align-items:center; justify-content:center; border:1.5px solid rgba(120,113,108,0.2);"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#78716c" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div>
+          </div>
+          <p style="font-size:12px; color:#78716c; margin:8px 0 0;">Pressed into the surface, monochrome</p>
+          <div style="border-radius:0.8rem; border-left:3px solid #a855f7; background:#faf5ff; padding:9px 11px; margin-top:11px;">
+            <p style="font-size:11px; color:#6b21a8; font-style:italic; margin:0;">"neumorphic soft UI, elements extruded from a single-color background, subtle dual shadows"</p>
+          </div>
+          <code style="display:inline-block; margin-top:9px; font-size:10px; color:#78716c; background:#f5f5f4; padding:5px 9px; border-radius:0.5rem;">dual soft shadows, no borders</code>
+        </div>
+      </div>
+
+      <!-- Liquid Glass -->
+      <div class="clay clay-card" style="border-radius:1.7rem; padding:20px; display:flex; flex-direction:column; gap:14px;">
+        <div style="border-radius:1.1rem; min-height:160px; background:linear-gradient(135deg,#22d3ee,#3b82f6,#7c3aed); display:flex; align-items:center; justify-content:center; padding:20px;">
+          <span style="background:rgba(255,255,255,0.16); color:#fff; font-size:11px; font-weight:700; padding:11px 22px; border-radius:999px; backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.4);">Refractive Pill</span>
+        </div>
+        <div>
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <h3 style="font-size:15px; font-weight:700; color:#1e293b; margin:0;">Liquid Glass (Apple-style)</h3>
+            <div style="width:26px; height:26px; border-radius:0.6rem; display:flex; align-items:center; justify-content:center; border:1.5px solid rgba(120,113,108,0.2);"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#78716c" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div>
+          </div>
+          <p style="font-size:12px; color:#78716c; margin:8px 0 0;">Refractive, physical glass, bends background</p>
+          <div style="border-radius:0.8rem; border-left:3px solid #a855f7; background:#faf5ff; padding:9px 11px; margin-top:11px;">
+            <p style="font-size:11px; color:#6b21a8; font-style:italic; margin:0;">"Apple-style liquid glass panel, refracts the background, subtle specular highlight on edges"</p>
+          </div>
+          <code style="display:inline-block; margin-top:9px; font-size:10px; color:#78716c; background:#f5f5f4; padding:5px 9px; border-radius:0.5rem;">high blur + specular highlight + distortion</code>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="display:flex; justify-content:center; margin-top:36px;">
+      <div class="clay-sm" style="background:#fff; border-radius:999px; padding:11px 28px; font-size:12px; font-weight:600; color:#78716c;">Load more styles ↓</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

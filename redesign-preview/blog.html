@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StartYou UI — Vibe Coder Blog</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", sans-serif;
+    display: flex;
+    justify-content: center;
+    background: #e9e5f0;
+  }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: -apple-system, "Segoe UI", sans-serif; }
+    .clay-shell { background: linear-gradient(135deg, #fdf1e7 0%, #eef3ff 55%, #f6ecff 100%); }
+    .clay { box-shadow: 8px 8px 16px rgba(163,140,201,0.25), -8px -8px 16px rgba(255,255,255,0.7); }
+    .clay-sm { box-shadow: 4px 4px 10px rgba(163,140,201,0.22), -4px -4px 10px rgba(255,255,255,0.65); }
+    .clay-inset { box-shadow: inset 3px 3px 6px rgba(163,140,201,0.18), inset -3px -3px 6px rgba(255,255,255,0.6); }
+    .clay-icon { background: linear-gradient(135deg, #fbcfe8 0%, #ddd6fe 100%); }
+    .clay-active { background: linear-gradient(135deg, #ddd6fe 0%, #fbcfe8 100%); }
+    .clay-card { background: rgba(255,255,255,0.82); }
+    .clay-hero { background: linear-gradient(135deg, #fce7f3 0%, #ede9fe 55%, #dbeafe 100%); }
+  
+</style>
+</head>
+<body>
+<div class="clay-shell" style="width:100%; max-width:1560px; min-height:100vh; padding:28px; display:flex; gap:24px; align-items:flex-start; font-family:-apple-system,sans-serif;">
+
+  <div class="clay clay-card" style="position:relative; width:260px; flex-shrink:0; border-radius:2rem; padding:20px 14px; opacity:0.75;">
+    <div style="display:flex; align-items:center; gap:10px; padding:2px 8px; margin-bottom:16px;">
+      <div class="clay-icon clay-sm" style="width:34px; height:34px; border-radius:0.8rem;"></div>
+      <div style="font-size:12px; font-weight:700; color:#1e293b;">StartYou UI</div>
+    </div>
+    <div class="clay-active clay-inset" style="border-radius:0.9rem; padding:8px 10px; display:flex; align-items:center; gap:9px;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#57534e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      <span style="font-size:11px; font-weight:600; color:#292524;">Blog</span>
+    </div>
+  </div>
+
+  <div style="flex:1; min-width:0;">
+
+    <div style="display:flex; align-items:center; gap:6px; margin-bottom:18px; font-size:11px; color:#a8a29e;">
+      <span>StartYou UI</span>
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#c4c4cc" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      <span style="color:#78716c; font-weight:600;">Vibe Coder Blog</span>
+    </div>
+
+    <div class="clay clay-hero" style="border-radius:2.4rem; padding:40px 36px; text-align:center;">
+      <div class="clay-icon clay-sm" style="width:44px; height:44px; border-radius:1.1rem; margin:0 auto 14px; display:flex; align-items:center; justify-content:center;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#57534e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9h16M9 4v16"/></svg>
+      </div>
+      <h1 style="font-size:26px; font-weight:800; color:#1e293b; margin:0;">Vibe Coder Blog</h1>
+      <p style="max-width:460px; margin:12px auto 0; font-size:13px; color:#57534e; line-height:1.6;">Best practices, quick guides, prompts, and workflows — organized by where you are, from your first shipped project to owning architecture decisions.</p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:26px;">
+      <div class="clay-sm clay-card" style="border-radius:1.4rem; padding:17px; display:flex; flex-direction:column; gap:9px;">
+        <div style="display:flex; justify-content:space-between;">
+          <div class="clay-icon clay-sm" style="width:32px; height:32px; border-radius:0.8rem; display:flex; align-items:center; justify-content:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#57534e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg></div>
+          <span style="background:#f1f5f9; color:#78716c; font-size:9px; font-weight:600; padding:4px 10px; border-radius:999px;">6 posts</span>
+        </div>
+        <h3 style="font-size:13px; font-weight:700; color:#1e293b; margin:0;">Beginner / Entry</h3>
+        <p style="font-size:11px; color:#78716c; margin:0; line-height:1.5;">Shipping your first real projects — build habits that don't turn into a mess six months from now.</p>
+      </div>
+      <div class="clay-sm clay-card" style="border-radius:1.4rem; padding:17px; display:flex; flex-direction:column; gap:9px;">
+        <div style="display:flex; justify-content:space-between;">
+          <div class="clay-icon clay-sm" style="width:32px; height:32px; border-radius:0.8rem; display:flex; align-items:center; justify-content:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#57534e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          <span style="background:#f1f5f9; color:#78716c; font-size:9px; font-weight:600; padding:4px 10px; border-radius:999px;">6 posts</span>
+        </div>
+        <h3 style="font-size:13px; font-weight:700; color:#1e293b; margin:0;">Junior Developer</h3>
+        <p style="font-size:11px; color:#78716c; margin:0; line-height:1.5;">Shipping features solo — writing code a teammate can trust without you standing over their shoulder.</p>
+      </div>
+      <div class="clay-sm clay-card" style="border-radius:1.4rem; padding:17px; display:flex; flex-direction:column; gap:9px;">
+        <div style="display:flex; justify-content:space-between;">
+          <a href="category-texture.html" style="text-decoration:none; display:block;"><div class="clay-icon clay-sm" style="width:32px; height:32px; border-radius:0.8rem; display:flex; align-items:center; justify-content:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#57534e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/></svg></div>
+          <span style="background:#f1f5f9; color:#78716c; font-size:9px; font-weight:600; padding:4px 10px; border-radius:999px;">6 posts</span>
+        </div></a>
+        <h3 style="font-size:13px; font-weight:700; color:#1e293b; margin:0;">Mid-Level Developer</h3>
+        <p style="font-size:11px; color:#78716c; margin:0; line-height:1.5;">Owning features end to end — reasoning through trade-offs before the AI writes a line.</p>
+      </div>
+      <div class="clay-sm clay-card" style="border-radius:1.4rem; padding:17px; display:flex; flex-direction:column; gap:9px;">
+        <div style="display:flex; justify-content:space-between;">
+          <div class="clay-icon clay-sm" style="width:32px; height:32px; border-radius:0.8rem; display:flex; align-items:center; justify-content:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#57534e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></div>
+          <span style="background:#f1f5f9; color:#78716c; font-size:9px; font-weight:600; padding:4px 10px; border-radius:999px;">6 posts</span>
+        </div>
+        <h3 style="font-size:13px; font-weight:700; color:#1e293b; margin:0;">Senior Developer</h3>
+        <p style="font-size:11px; color:#78716c; margin:0; line-height:1.5;">Accountable for architecture and velocity — using AI as a critic, not a typist.</p>
+      </div>
+    </div>
+
+    <!-- Post list + filter -->
+    <div style="margin-top:44px; display:grid; grid-template-columns:2fr 1fr; gap:24px;">
+
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <div class="clay-sm clay-card" style="border-radius:1.3rem; padding:18px; display:flex; gap:14px; align-items:flex-start;">
+          <span style="background:#ddd6fe; color:#5b21b6; font-size:9px; font-weight:700; padding:4px 11px; border-radius:999px; flex-shrink:0; margin-top:2px; white-space:nowrap;">Workflow</span>
+          <div style="flex:1;">
+            <h4 style="font-size:14px; font-weight:700; color:#1e293b; margin:0;">The First-Project Setup Loop That Doesn't Bite You Later</h4>
+            <p style="font-size:11.5px; color:#78716c; margin:7px 0 0; line-height:1.5;">A repeatable init → scaffold → commit rhythm for your first AI-assisted project.</p>
+          </div>
+        </div>
+        <div class="clay-sm clay-card" style="border-radius:1.3rem; padding:18px; display:flex; gap:14px; align-items:flex-start;">
+          <span style="background:#fbcfe8; color:#9d174d; font-size:9px; font-weight:700; padding:4px 11px; border-radius:999px; flex-shrink:0; margin-top:2px; white-space:nowrap;">Prompt</span>
+          <div style="flex:1;">
+            <h4 style="font-size:14px; font-weight:700; color:#1e293b; margin:0;">A Prompt Template for "Explain This Codebase to Me"</h4>
+            <p style="font-size:11.5px; color:#78716c; margin:7px 0 0; line-height:1.5;">Copy-ready prompt for orienting fast in a codebase you didn't write.</p>
+          </div>
+        </div>
+        <div class="clay-sm clay-card" style="border-radius:1.3rem; padding:18px; display:flex; gap:14px; align-items:flex-start;">
+          <span style="background:#bfdbfe; color:#1e40af; font-size:9px; font-weight:700; padding:4px 11px; border-radius:999px; flex-shrink:0; margin-top:2px; white-space:nowrap;">Best practice</span>
+          <div style="flex:1;">
+            <h4 style="font-size:14px; font-weight:700; color:#1e293b; margin:0;">Commit Messages an AI Agent Can Actually Use Later</h4>
+            <p style="font-size:11.5px; color:#78716c; margin:7px 0 0; line-height:1.5;">Why "fix stuff" costs you the next six months of AI-assisted debugging.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="clay-inset clay-card" style="border-radius:1.3rem; padding:16px;">
+        <div style="font-size:10px; font-weight:600; color:#a8a29e; text-transform:uppercase; letter-spacing:.05em; margin-bottom:10px;">Content type</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div class="clay-active" style="border-radius:999px; padding:7px 13px; font-size:10.5px; font-weight:700; color:#292524;">All types</div>
+          <div style="border-radius:999px; padding:7px 13px; font-size:10.5px; color:#78716c;">Best practice</div>
+          <div style="border-radius:999px; padding:7px 13px; font-size:10.5px; color:#78716c;">Quick guide</div>
+          <div style="border-radius:999px; padding:7px 13px; font-size:10.5px; color:#78716c;">Prompt</div>
+          <div style="border-radius:999px; padding:7px 13px; font-size:10.5px; color:#78716c;">Workflow</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

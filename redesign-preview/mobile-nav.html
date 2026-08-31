@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StartYou UI — Mobile Nav</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", sans-serif;
+    display: flex;
+    justify-content: center;
+    background: #e9e5f0;
+  }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: -apple-system, "Segoe UI", sans-serif; }
+    .clay-shell { background: linear-gradient(135deg, #fdf1e7 0%, #eef3ff 55%, #f6ecff 100%); }
+    .clay { box-shadow: 8px 8px 16px rgba(163,140,201,0.25), -8px -8px 16px rgba(255,255,255,0.7); }
+    .clay-sm { box-shadow: 4px 4px 10px rgba(163,140,201,0.22), -4px -4px 10px rgba(255,255,255,0.65); }
+    .clay-inset { box-shadow: inset 3px 3px 6px rgba(163,140,201,0.18), inset -3px -3px 6px rgba(255,255,255,0.6); }
+    .clay-icon { background: linear-gradient(135deg, #fbcfe8 0%, #ddd6fe 100%); }
+    .clay-active { background: linear-gradient(135deg, #ddd6fe 0%, #fbcfe8 100%); }
+    .clay-card { background: rgba(255,255,255,0.85); }
+  
+</style>
+</head>
+<body>
+<div class="clay-shell" style="width:390px; min-height:1560px; padding:14px; font-family:-apple-system,sans-serif;">
+
+  <!-- top bar -->
+  <div class="clay clay-card" style="border-radius:1.5rem; padding:11px 14px; display:flex; align-items:center; justify-content:space-between;">
+    <div style="display:flex; align-items:center; gap:8px;">
+      <div class="clay-icon clay-sm" style="width:28px; height:28px; border-radius:0.7rem;"></div>
+      <span style="font-size:12px; font-weight:700; color:#1e293b;">StartYou UI</span>
+    </div>
+    <div style="display:flex; gap:7px;">
+      <div class="clay-sm" style="width:28px; height:28px; border-radius:999px; background:#fff; display:flex; align-items:center; justify-content:center;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </div>
+      <div class="clay-sm" style="width:28px; height:28px; border-radius:0.7rem; background:#fff; display:flex; align-items:center; justify-content:center;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- menu sheet (open state) -->
+  <div class="clay clay-card" style="border-radius:1.8rem; padding:18px; margin-top:16px;">
+    <div class="clay-inset" style="border-radius:999px; padding:8px 13px; font-size:10.5px; color:#94a3b8; display:flex; align-items:center; gap:6px; margin-bottom:14px;">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      Search styles…
+    </div>
+
+    <div style="font-size:9px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:#b8bccb; margin-bottom:6px; padding-left:4px;">Browse</div>
+    <div style="display:flex; flex-direction:column; gap:5px;">
+      <div class="clay-active clay-inset" style="border-radius:0.9rem; padding:10px 12px; display:flex; align-items:center; gap:10px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#57534e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/></svg>
+        <span style="font-size:11.5px; font-weight:600; color:#292524;">Texture / Material</span>
+      </div>
+      <div style="border-radius:0.9rem; padding:10px 12px; display:flex; align-items:center; gap:10px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#78716c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+        <span style="font-size:11.5px; color:#57534e;">Flat &amp; Minimal</span>
+      </div>
+      <div style="border-radius:0.9rem; padding:10px 12px; display:flex; align-items:center; gap:10px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#78716c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+        <span style="font-size:11.5px; color:#57534e;">Retro / Nostalgic</span>
+      </div>
+      <div style="border-radius:0.9rem; padding:10px 12px; display:flex; align-items:center; gap:10px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#78716c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <span style="font-size:11.5px; color:#57534e;">Dark &amp; Moody</span>
+      </div>
+      <div style="border-radius:0.9rem; padding:10px 12px; display:flex; align-items:center; gap:10px; opacity:0.55;">
+        <span style="font-size:10.5px; color:#a8a29e;">+ 6 more categories</span>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid rgba(163,140,201,0.2); margin-top:14px; padding-top:14px; display:flex; flex-direction:column; gap:5px;">
+      <div style="border-radius:0.9rem; padding:9px 12px; display:flex; align-items:center; gap:10px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#78716c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        <span style="font-size:11px; color:#57534e; font-weight:600;">Blog</span>
+      </div>
+      <div style="border-radius:0.9rem; padding:9px 12px; display:flex; align-items:center; gap:10px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#78716c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+        <span style="font-size:11px; color:#57534e; font-weight:600;">About</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- hero below the fold -->
+  <div class="clay" style="border-radius:2rem; padding:30px 20px; text-align:center; margin-top:20px; background:linear-gradient(135deg, #fce7f3 0%, #ede9fe 55%, #dbeafe 100%);">
+    <h1 style="font-size:19px; font-weight:800; color:#1e293b; margin:0; line-height:1.2;">Web UI Style Cheatsheet</h1>
+    <p style="font-size:11px; color:#57534e; margin:9px 0 0; line-height:1.5;">Live-rendered UI style keywords with real, working previews.</p>
+    <div class="clay-sm" style="background:#fff; border-radius:999px; padding:11px 0; margin-top:16px; font-size:12px; font-weight:700; color:#1e293b;">Start exploring →</div>
+  </div>
+
+  <div style="display:flex; gap:10px; margin-top:16px; overflow:hidden;">
+    <div class="clay-sm" style="min-width:120px; height:78px; border-radius:1rem; flex-shrink:0; background:#fed7aa; display:flex; align-items:center; justify-content:center;">
+      <span style="background:#fdba74; color:#7c2d12; font-size:8px; font-weight:700; padding:4px 9px; border-radius:999px;">Claymorphism</span>
+    </div>
+    <div class="clay-sm" style="min-width:120px; height:78px; border-radius:1rem; flex-shrink:0; background:linear-gradient(135deg,#6366f1,#a855f7,#ec4899); display:flex; align-items:center; justify-content:center;">
+      <span style="color:#fff; font-size:8px; font-weight:700; background:rgba(255,255,255,0.18); padding:4px 9px; border-radius:6px;">Glassmorphism</span>
+    </div>
+    <div style="min-width:60px; height:78px; border-radius:1rem; flex-shrink:0; border:1.5px dashed rgba(120,113,108,0.3); display:flex; align-items:center; justify-content:center; font-size:8px; color:#a8a29e;">+47</div>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:13px; margin-top:22px;">
+    <div class="clay-sm clay-card" style="border-radius:1.4rem; padding:17px; display:flex; flex-direction:column; gap:9px;">
+      <div style="display:flex; justify-content:space-between;">
+        <div class="clay-icon clay-sm" style="width:34px; height:34px; border-radius:0.9rem; display:flex; align-items:center; justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#57534e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/></svg></div>
+        <span style="background:#f1f5f9; color:#78716c; font-size:9px; font-weight:600; padding:4px 10px; border-radius:999px;">8 styles</span>
+      </div>
+      <h3 style="font-size:13px; font-weight:700; color:#1e293b; margin:0;">Texture / Material</h3>
+      <p style="font-size:11px; color:#78716c; margin:0;">Frosted glass, clay, and material-mimicking surfaces.</p>
+    </div>
+    <div class="clay-sm clay-card" style="border-radius:1.4rem; padding:17px; display:flex; flex-direction:column; gap:9px;">
+      <div style="display:flex; justify-content:space-between;">
+        <div class="clay-icon clay-sm" style="width:34px; height:34px; border-radius:0.9rem; display:flex; align-items:center; justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#57534e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div>
+        <span style="background:#f1f5f9; color:#78716c; font-size:9px; font-weight:600; padding:4px 10px; border-radius:999px;">5 styles</span>
+      </div>
+      <h3 style="font-size:13px; font-weight:700; color:#1e293b; margin:0;">Flat &amp; Minimal</h3>
+      <p style="font-size:11px; color:#78716c; margin:0;">Clean, restrained styles, little to no shadow.</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
