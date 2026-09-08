@@ -14,6 +14,7 @@ import UxUiKeywordPage from "./pages/UxUiKeywordPage";
 import ComponentPage from "./pages/ComponentPage";
 import BlogIndex from "./pages/BlogIndex";
 import BlogLevelPage from "./pages/BlogLevelPage";
+import LegalPage from "./pages/LegalPage";
 
 function App() {
   return (
@@ -31,6 +32,8 @@ function App() {
         <Route path="visual-effect" element={<VisualEffectPage />} />
         <Route path="ux-ui-keyword" element={<UxUiKeywordPage />} />
         <Route path="component" element={<ComponentPage />} />
+        <Route path="privacy" element={<LegalPage document="privacy" />} />
+        <Route path="terms" element={<LegalPage document="terms" />} />
         <Route path="blog">
           <Route index element={<BlogIndex />} />
           <Route path=":level" element={<BlogLevelPage />} />
