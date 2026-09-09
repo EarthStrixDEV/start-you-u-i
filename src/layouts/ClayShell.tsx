@@ -10,12 +10,12 @@ function ClayShell() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#fdf1e7] via-[#eef3ff] to-[#f6ecff] dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 md:flex md:gap-6 md:p-6">
+    <div className="app-canvas min-h-screen md:flex md:gap-6 md:p-6">
       {/* Mobile-only top bar: logo + hamburger */}
-      <div className="flex items-center justify-between rounded-b-[2rem] bg-white/70 px-4 py-3 shadow-clay-sm backdrop-blur-sm dark:bg-slate-800/70 md:hidden">
+      <div className="app-surface flex items-center justify-between rounded-b-3xl px-4 py-3 shadow-clay-sm md:hidden">
         <div className="flex items-center gap-2">
-          <div className="rounded-2xl bg-gradient-to-br from-pink-200 to-violet-200 p-2 shadow-clay-sm">
-            <Palette className="h-5 w-5 text-slate-700" aria-hidden="true" />
+          <div className="app-icon-surface rounded-2xl p-2 shadow-clay-sm">
+            <Palette className="h-5 w-5" aria-hidden="true" />
           </div>
           <span className="text-base font-semibold text-slate-800 dark:text-slate-100">
             StartYou UI
@@ -25,7 +25,7 @@ function ClayShell() {
           type="button"
           onClick={() => setMobileNavOpen(true)}
           aria-label="Open navigation menu"
-          className="rounded-full bg-white/60 p-2.5 shadow-clay-sm transition-all hover:shadow-clay dark:bg-slate-700/60"
+            className="app-focus app-surface rounded-full p-2.5 shadow-clay-sm transition-shadow hover:shadow-clay"
         >
           <Menu className="h-5 w-5 text-slate-700 dark:text-slate-200" aria-hidden="true" />
         </button>

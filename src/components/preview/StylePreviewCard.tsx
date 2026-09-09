@@ -27,7 +27,7 @@ function StylePreviewCard({ style }: StylePreviewCardProps) {
     style.demo;
 
   return (
-    <div className="rounded-[2rem] bg-white/80 shadow-clay p-6 flex flex-col gap-4 dark:bg-slate-800/80">
+    <div className="app-card rounded-2xl p-6 shadow-clay flex flex-col gap-4">
       <PreviewFrame bgClass={bgClass}>
         <div className={containerClass}>
           <p className={`mb-4 text-sm font-medium ${textClass ?? ""}`}>

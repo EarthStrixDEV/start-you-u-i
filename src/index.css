@@ -3,11 +3,77 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --shadow-clay: 8px 8px 16px rgba(163,140,201,0.25), -8px -8px 16px rgba(255,255,255,0.7);
-  --shadow-clay-sm: 4px 4px 10px rgba(163,140,201,0.22), -4px -4px 10px rgba(255,255,255,0.65);
-  --shadow-clay-inset: inset 3px 3px 6px rgba(163,140,201,0.18), inset -3px -3px 6px rgba(255,255,255,0.6);
+  --shadow-clay: 0 12px 28px rgba(79, 55, 130, 0.12);
+  --shadow-clay-sm: 0 6px 16px rgba(79, 55, 130, 0.1);
+  --shadow-clay-inset: inset 0 1px 2px rgba(79, 55, 130, 0.12);
   --shadow-neu: 6px 6px 12px rgba(163,177,198,0.6), -6px -6px 12px rgba(255,255,255,0.8);
   --shadow-neu-inset: inset 4px 4px 8px rgba(163,177,198,0.5), inset -4px -4px 8px rgba(255,255,255,0.7);
+}
+
+:root {
+  --app-canvas: #f7f5fb;
+  --app-surface: #ffffff;
+  --app-surface-subtle: #f0ecff;
+  --app-primary: #6d4aff;
+  --app-primary-hover: #5939dc;
+  --app-button-text: #ffffff;
+  --app-accent: #e979b8;
+  --app-text: #1f2937;
+  --app-text-muted: #5f6b7a;
+  --app-border: #e6e1f0;
+}
+
+.dark {
+  --app-canvas: #171423;
+  --app-surface: #242033;
+  --app-surface-subtle: #302947;
+  --app-primary: #b6a5ff;
+  --app-primary-hover: #cabfff;
+  --app-button-text: #1f2937;
+  --app-accent: #f6a5d2;
+  --app-text: #f8fafc;
+  --app-text-muted: #c2c7d0;
+  --app-border: #443b5d;
+}
+
+.app-canvas { background: var(--app-canvas); color: var(--app-text); }
+.app-surface { background: var(--app-surface); border: 1px solid var(--app-border); }
+.app-surface-subtle { background: var(--app-surface-subtle); border: 1px solid var(--app-border); }
+.app-card { background: var(--app-surface); border: 1px solid var(--app-border); box-shadow: var(--shadow-clay-sm); }
+.app-muted { color: var(--app-text-muted); }
+.app-icon-surface { background: var(--app-surface-subtle); color: var(--app-primary); border: 1px solid var(--app-border); }
+.app-hero { background: linear-gradient(135deg, #f0ecff 0%, #f7f5fb 55%, #fcebf5 100%); border: 1px solid var(--app-border); }
+.dark .app-hero { background: linear-gradient(135deg, #302947 0%, #171423 58%, #38283b 100%); }
+.app-button-primary { background: var(--app-primary); color: var(--app-button-text); box-shadow: 0 6px 16px rgba(109, 74, 255, 0.24); }
+.app-button-primary:hover { background: var(--app-primary-hover); }
+.app-input { background: var(--app-surface); border: 1px solid var(--app-border); color: var(--app-text); }
+.app-code { background: var(--app-surface-subtle); border: 1px solid var(--app-border); color: var(--app-text-muted); }
+.app-focus:focus-visible { outline: 3px solid color-mix(in srgb, var(--app-primary) 45%, transparent); outline-offset: 3px; }
+
+/* Existing content cards share this surface utility; keep their visual migration
+ * central while bespoke live demos remain free to express their own styles. */
+.app-canvas .bg-white\/80 {
+  background-color: var(--app-surface) !important;
+  border: 1px solid var(--app-border);
+}
+.app-canvas .bg-white\/50 {
+  background-color: var(--app-surface-subtle) !important;
+  border: 1px solid var(--app-border);
+}
+
+/* Category pages share a direct heading-and-description structure. Keeping its
+ * foreground semantic prevents the light utility colours from leaking into
+ * dark mode while leaving the live style demos untouched. */
+.app-page-title { color: var(--app-text); }
+.app-page-description { color: var(--app-text-muted); }
+
+/* Keep long navigation reachable without adding a persistent visual rail. */
+.sidebar-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.sidebar-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 /*
@@ -34,13 +100,13 @@
  * is no dark-visible chrome that would render them.
  */
 .dark .shadow-clay {
-  box-shadow: 8px 8px 16px rgba(0,0,0,0.45), -8px -8px 16px rgba(54,69,79,0.45) !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28) !important;
 }
 .dark .shadow-clay-sm {
-  box-shadow: 4px 4px 10px rgba(0,0,0,0.4), -4px -4px 10px rgba(54,69,79,0.4) !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22) !important;
 }
 .dark .shadow-clay-inset {
-  box-shadow: inset 3px 3px 6px rgba(0,0,0,0.35), inset -3px -3px 6px rgba(54,69,79,0.35) !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3) !important;
 }
 
 @keyframes glitch-jitter {

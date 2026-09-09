@@ -28,25 +28,25 @@ const footerGroups = [
 ];
 
 const linkClassName =
-  "rounded-lg text-sm text-slate-500 transition-colors hover:text-violet-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-violet-500 dark:text-slate-400 dark:hover:text-violet-300";
+  "app-focus app-muted rounded-lg text-sm transition-colors hover:text-violet-700 dark:hover:text-violet-200";
 
 function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-12 rounded-[2rem] border border-white/70 bg-white/70 px-6 py-8 shadow-clay backdrop-blur-sm dark:border-slate-700/70 dark:bg-slate-800/70 sm:px-8">
+    <footer className="app-card mt-12 rounded-2xl px-6 py-8 shadow-clay sm:px-8">
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_repeat(3,minmax(0,1fr))]">
         <div className="max-w-sm">
           <Link
             to="/"
-            className="inline-flex items-center gap-3 rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-violet-500"
+            className="app-focus inline-flex items-center gap-3 rounded-2xl"
           >
-            <span className="rounded-2xl bg-gradient-to-br from-pink-200 to-violet-200 p-2.5 shadow-clay-sm">
-              <Palette className="h-5 w-5 text-slate-700" aria-hidden="true" />
+            <span className="app-icon-surface rounded-2xl p-2.5 shadow-clay-sm">
+              <Palette className="h-5 w-5" aria-hidden="true" />
             </span>
             <span className="text-lg font-semibold text-slate-800 dark:text-slate-100">StartYou UI</span>
           </Link>
-          <p className="mt-4 text-sm leading-6 text-slate-500 dark:text-slate-400">
+          <p className="app-muted mt-4 text-sm leading-6">
             Your visual guide to UI styles.
           </p>
         </div>
@@ -67,7 +67,7 @@ function Footer() {
         ))}
       </div>
 
-      <div className="mt-8 flex flex-col gap-3 border-t border-white/70 pt-5 text-xs text-slate-500 dark:border-slate-700/70 dark:text-slate-400 sm:flex-row sm:items-center sm:justify-between">
+      <div className="app-muted mt-8 flex flex-col gap-3 border-t border-[var(--app-border)] pt-5 text-xs sm:flex-row sm:items-center sm:justify-between">
         <span>© {year} StartYou UI. Made for curious builders.</span>
         <nav aria-label="Legal" className="flex items-center gap-4">
           <Link to="/privacy" className={linkClassName}>

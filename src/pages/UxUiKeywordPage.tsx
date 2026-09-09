@@ -10,10 +10,10 @@ const terms = glossaryTerms.filter((t) => t.categoryId === "ux-ui-keyword");
 function UxUiKeywordPage() {
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-slate-800 dark:text-slate-100">
+      <h1 className="app-page-title text-2xl font-semibold">
         {category.label}
       </h1>
-      <p className="mt-2 text-slate-500 dark:text-slate-400">{category.description}</p>
+      <p className="app-page-description mt-2">{category.description}</p>
 
       <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
         {terms.map((term) => (
